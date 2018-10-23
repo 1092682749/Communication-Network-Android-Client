@@ -3,9 +3,11 @@ package com.example.qingyun.myfirstapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.qingyun.myfirstapp.service.RequestService;
 import com.example.qingyun.myfirstapp.utils.HttpRequestor;
 import com.example.qingyun.myfirstapp.utils.TimeClientHandler;
 import io.netty.bootstrap.Bootstrap;
@@ -28,7 +30,7 @@ import java.net.MalformedURLException;
 import java.net.Socket;
 import java.net.URL;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Runnable {
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
     String host = "192.168.0.181";
     Integer port = 8080;
@@ -41,8 +43,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
     public void login(View view){
-        Intent intent = new Intent(this, ChatMainActivity.class);
-        startActivity(intent);
+//        startService(new Intent(this,RequestService.class));
+        Thread thread = new Thread(this);
+        thread.start();
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                firstSuccess();
+//            }
+//        }).start();
+//        Intent intent = new Intent(this,FriendListActivity.class);
+//        startActivity(intent);
     }
     public void sendMessage(View view) throws Exception {
         Thread thread = new Thread(new Runnable() {
@@ -155,5 +166,11 @@ public class MainActivity extends AppCompatActivity {
     }
     public void okHttp() {
         
+    }
+
+    @Override
+    public void run() {
+        Intent intent = new Intent(this, ChatMainActivity.class);
+        startActivity(intent);
     }
 }

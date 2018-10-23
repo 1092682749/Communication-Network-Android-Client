@@ -31,7 +31,14 @@
             android:enabled="true"
             android:exported="true" />
         <!-- 后台服务-长连接 -->
-        <activity android:name=".ChatMainActivity"></activity>
+        <activity android:name=".ChatMainActivity" />
+        <activity android:name=".Main2Activity" />
+        <activity android:name=".FriendListActivity" />
+
+        <service
+            android:name=".service.RequestService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

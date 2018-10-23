@@ -127,7 +127,7 @@ public class HttpRequestor {
         BufferedReader reader = null;
         StringBuffer resultBuffer = new StringBuffer();
         String tempLine = null;
-
+        httpURLConnection.connect();
         try {
             outputStream = httpURLConnection.getOutputStream();
             outputStreamWriter = new OutputStreamWriter(outputStream);

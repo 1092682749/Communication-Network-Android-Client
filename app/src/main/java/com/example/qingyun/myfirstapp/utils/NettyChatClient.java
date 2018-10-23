@@ -1,5 +1,12 @@
 package com.example.qingyun.myfirstapp.utils;
 
+import android.app.Service;
+
+import com.alibaba.fastjson.JSON;
+import com.example.qingyun.myfirstapp.pojo.ChatMsgRecord;
+
+import org.json.JSONObject;
+
 import javax.net.ssl.SSLEngine;
 
 import io.netty.bootstrap.Bootstrap;
@@ -27,7 +34,7 @@ import io.netty.util.concurrent.FutureListener;
 
 public enum  NettyChatClient {
     NETTY_CHAT_CLIENT();
-    String host = "dyzhello.club";
+    String host = "119.29.4.88";
     int port = 8000;
     private EventLoopGroup group;
     private Bootstrap b;
@@ -87,8 +94,14 @@ public enum  NettyChatClient {
     // 暂时以String代替消息对象
     public void write(String msg) {
         System.out.println("send..." + msg);
+        ChatMsgRecord chatMsgRecord = new ChatMsgRecord();
+        chatMsgRecord.setContent(msg);
+        chatMsgRecord.setSendname("client1");
+        chatMsgRecord.setReceivename("server");
+        String json = JSON.toJSONString(chatMsgRecord);
+        System.out.println(json);
         ChannelFuture channelFuture = getChannelFuture();
-        channelFuture.channel().writeAndFlush(msg);
+        channelFuture.channel().writeAndFlush(json);
     }
     public static NettyChatClient getInstance(){
         return NETTY_CHAT_CLIENT;

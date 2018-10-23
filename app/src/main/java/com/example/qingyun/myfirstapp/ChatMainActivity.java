@@ -3,11 +3,12 @@ package com.example.qingyun.myfirstapp;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
+import com.example.qingyun.myfirstapp.pojo.ChatMsgRecord;
+import com.example.qingyun.myfirstapp.utils.CacheMessage;
 import com.example.qingyun.myfirstapp.utils.NettyChatClient;
-import com.example.qingyun.myfirstapp.utils.WebSocketClientHandler;
-
-import org.java_websocket.client.WebSocketClient;
 
 import java.net.URISyntaxException;
 
@@ -22,9 +23,25 @@ public class ChatMainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_main);
+        CacheMessage.observerMap.put("client1",this);
     }
 
     public void write(View view){
-        nettyChatClient.write("aaaaaadasdasdadaddddd1111111!!!!!");
+        EditText editText = findViewById(R.id.chatText);
+        String content = editText.getText().toString();
+        nettyChatClient.write(content);
+    }
+
+    public void setMessage(Object o) {
+        if (o instanceof String){
+            String s = (String)o;
+            System.out.println(s);
+        }
+        if (o instanceof ChatMsgRecord) {
+            ChatMsgRecord chatMsgRecord = (ChatMsgRecord)o;
+            System.out.println(chatMsgRecord.getContent());
+            TextView textView = findViewById(R.id.responseMsg);
+            textView.append(chatMsgRecord.getContent()+ "\r\n");
+        }
     }
 }
