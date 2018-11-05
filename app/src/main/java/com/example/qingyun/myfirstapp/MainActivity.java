@@ -1,11 +1,26 @@
 package com.example.qingyun.myfirstapp;
 
+import android.Manifest;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.media.MediaRecorder;
+import android.os.Build;
+import android.provider.MediaStore;
+import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
+import android.util.Base64;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.qingyun.myfirstapp.service.RequestService;
 import com.example.qingyun.myfirstapp.utils.HttpRequestor;
@@ -18,14 +33,22 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.base64.Base64Decoder;
+import io.netty.handler.codec.base64.Base64Encoder;
 
 import javax.net.ssl.HttpsURLConnection;
+
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.Socket;
 import java.net.URL;
@@ -37,10 +60,50 @@ public class MainActivity extends AppCompatActivity implements Runnable {
     Socket socket = null;
     EventLoopGroup workerGroup = null;
     Bootstrap b = null;
+    static final int REQUEST_IMAGE_CAPTURE = 1;
+    String path = "/sdcard/image/";
+    MediaRecorder recorder = null;
+    Button luyinBtn;
+    Long recorderStartTime;
+    Long recorderEndTime;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA,Manifest.permission.RECORD_AUDIO},0);
+        luyinBtn = findViewById(R.id.luyin);
+        luyinBtn.setOnTouchListener(new View.OnTouchListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    Toast.makeText(MainActivity.this,"录音开始" ,Toast.LENGTH_SHORT).show();
+//                    luyinBtn.setBackgroundColor(Color.BLACK);
+                    try {
+                        recorderStartTime = System.currentTimeMillis();
+                        audio(v);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }else if(event.getAction() == MotionEvent.ACTION_UP){
+                    Toast.makeText(MainActivity.this,"录音结束" ,Toast.LENGTH_SHORT).show();
+//                    luyinBtn.setBackgroundColor(Color.WHITE);
+                    try{
+
+                        recorderEndTime = System.currentTimeMillis();
+                        if ((recorderEndTime - recorderStartTime) < 1000){
+                            Thread.sleep(1000);
+                        }
+                        recorder.stop();
+                    }catch (Exception e){
+                        Toast.makeText(MainActivity.this,"时间太短啦!",Toast.LENGTH_SHORT).show();
+//                        recorder.release();
+                    }
+
+                }
+                return false;
+            }
+        });
     }
     public void login(View view){
 //        startService(new Intent(this,RequestService.class));
@@ -172,5 +235,87 @@ public class MainActivity extends AppCompatActivity implements Runnable {
     public void run() {
         Intent intent = new Intent(this, ChatMainActivity.class);
         startActivity(intent);
+    }
+    public void imageCapture(View view){
+//        Log.d(tag,"dispatchTakePictureIntent");
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, 1);
+        }
+    }
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void audio(View view) throws IOException {
+        if (recorder == null) {
+            recorder = new MediaRecorder();
+        }
+            recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+            recorder.setOutputFormat(MediaRecorder.OutputFormat.DEFAULT);
+            File filePath = new File("/sdcard/voice/");
+            if (!filePath.exists()){
+                filePath.mkdirs();
+            }
+            File saveFile = new File(filePath + "/voiceFile.mp3");
+            if (!saveFile.exists()){
+                saveFile.createNewFile();
+            }
+            recorder.setOutputFile(saveFile);
+            recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
+//            try {
+//                recorder.prepare();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+        recorder.prepare();
+        recorder.start();
+    }
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            ImageView mImageView = findViewById(R.id.imageView);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            imageBitmap.compress(Bitmap.CompressFormat.PNG,100,baos);
+            try {
+                String imageStr = new String(baos.toByteArray(),"utf-8");
+                File pf = new File(path);
+                if (!pf.exists()){
+                    pf.mkdirs();
+                }
+                String fileName = "saveTest.png";
+//                BufferedOutputStream bos = new BufferedOutputStream(new ByteArrayOutputStream());
+                File file = new File(path + fileName);
+                if (!file.exists()){
+                    file.createNewFile();
+                }
+                FileOutputStream fos = new FileOutputStream(file);
+                BufferedOutputStream bos = new BufferedOutputStream(fos);
+
+                // jdk8 工具类
+                java.util.Base64.Encoder encoder = java.util.Base64.getEncoder();
+                String baseStr = encoder.encodeToString(baos.toByteArray());
+                java.util.Base64.Decoder decoder = java.util.Base64.getDecoder();
+                byte[] changeByte = decoder.decode(baseStr);
+                System.out.println(baseStr);
+                bos.write(changeByte);
+                bos.flush();
+                bos.close();
+                fos.close();
+
+//                bos.write(imageStr.getBytes("utf-8"));
+//                System.out.print(imageStr);
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+
+            }
+            mImageView.setImageBitmap(imageBitmap);
+        }
+    }
+    public void none(View view){
+        Toast.makeText(this,"时间太短啦！",Toast.LENGTH_SHORT).show();
     }
 }
