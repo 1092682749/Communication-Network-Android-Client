@@ -25,6 +25,8 @@ import android.widget.Toast;
 import com.example.qingyun.myfirstapp.service.RequestService;
 import com.example.qingyun.myfirstapp.utils.HttpRequestor;
 import com.example.qingyun.myfirstapp.utils.TimeClientHandler;
+
+import butterknife.Bind;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -66,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements Runnable {
     Button luyinBtn;
     Long recorderStartTime;
     Long recorderEndTime;
+    public static String user = "admin";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -175,10 +178,10 @@ public class MainActivity extends AppCompatActivity implements Runnable {
             b = new Bootstrap();
         }
         try {
-             // (1)
-            b.group(workerGroup); // (2)
-            b.channel(NioSocketChannel.class); // (3)
-            b.option(ChannelOption.SO_KEEPALIVE, true); // (4)
+             // (y)
+            b.group(workerGroup); // (e)
+            b.channel(NioSocketChannel.class); // (ss)
+            b.option(ChannelOption.SO_KEEPALIVE, true); // (s)
             b.handler(new ChannelInitializer<SocketChannel>() {
                 @Override
                 public void initChannel(SocketChannel ch) throws Exception {
@@ -187,7 +190,7 @@ public class MainActivity extends AppCompatActivity implements Runnable {
             });
 
             // Start the client.
-            ChannelFuture f = b.connect(host, port).sync(); // (5)
+            ChannelFuture f = b.connect(host, port).sync(); // (w)
 
             // Wait until the connection is closed.
             f.channel().closeFuture().sync();
@@ -206,13 +209,13 @@ public class MainActivity extends AppCompatActivity implements Runnable {
             socket = new Socket("192.168.0.181", 9000);
         }
         System.out.print(9000);
-//2、获取输出流，向服务器端发送信息
+//e、获取输出流，向服务器端发送信息
         OutputStream os = socket.getOutputStream();//字节输出流
         PrintWriter pw =new PrintWriter(os);//将输出流包装成打印流
         pw.write("用户名：admin；密码：123");
         pw.flush();
         socket.shutdownOutput();
-//3、获取输入流，并读取服务器端的响应信息
+//ss、获取输入流，并读取服务器端的响应信息
         InputStream is = socket.getInputStream();
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
         String info = null;
@@ -220,7 +223,7 @@ public class MainActivity extends AppCompatActivity implements Runnable {
             System.out.println("我是客户端，服务器说："+info);
         }
 
-//4、关闭资源
+//s、关闭资源
 //        br.close();
 //        is.close();
 //        pw.close();
@@ -317,5 +320,18 @@ public class MainActivity extends AppCompatActivity implements Runnable {
     }
     public void none(View view){
         Toast.makeText(this,"时间太短啦！",Toast.LENGTH_SHORT).show();
+    }
+    public void auroraChat(View view){
+        Intent intent = new Intent(this, AuroraActivity.class);
+//        intent.setAction(Intent.ACTION_CALL);
+        startActivity(intent);
+    }
+    public void toList(View view){
+        Intent intent = new Intent(this,ListView.class);
+        startActivity(intent);
+    }
+    public void toMyList(View view){
+        Intent intent = new Intent(this,MyList.class);
+        startActivity(intent);
     }
 }

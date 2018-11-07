@@ -4,10 +4,10 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.qingyun.myfirstapp"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
-        versionName "1.0"
+        versionName "y.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         javaCompileOptions {
             annotationProcessorOptions {
@@ -44,4 +44,8 @@ dependencies {
     implementation group: 'org.jboss.marshalling', name: 'jboss-marshalling', version: '2.0.5.Final'
     // https://mvnrepository.com/artifact/com.alibaba/fastjson
     implementation group: 'com.alibaba', name: 'fastjson', version: '1.2.51'
+    implementation 'cn.jiguang.imui:messagelist:0.7.4'
+// https://mvnrepository.com/artifact/com.jakewharton/butterknife
+    implementation group: 'com.jakewharton', name: 'butterknife', version: '7.0.1'
+
 }

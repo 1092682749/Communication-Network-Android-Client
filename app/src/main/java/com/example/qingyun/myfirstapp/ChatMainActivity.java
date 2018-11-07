@@ -1,5 +1,6 @@
 package com.example.qingyun.myfirstapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +25,9 @@ public class ChatMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_main);
         CacheMessage.observerMap.put("client1",this);
+        Intent intent = getIntent();
+        String s = intent.getStringExtra("item");
+        System.out.println(s);
     }
 
     public void write(View view){
@@ -40,8 +44,8 @@ public class ChatMainActivity extends AppCompatActivity {
         if (o instanceof ChatMsgRecord) {
             ChatMsgRecord chatMsgRecord = (ChatMsgRecord)o;
             System.out.println(chatMsgRecord.getContent());
-            TextView textView = findViewById(R.id.responseMsg);
-            textView.append(chatMsgRecord.getContent()+ "\r\n");
+//            TextView textView = findViewById(R.id.responseMsg);
+//            textView.append(chatMsgRecord.getContent()+ "\r\n");
         }
     }
 }

@@ -34,7 +34,7 @@ import io.netty.util.concurrent.FutureListener;
 
 public enum  NettyChatClient {
     NETTY_CHAT_CLIENT();
-    String host = "119.29.4.88";
+    String host = "119.29.s.88";
     int port = 8000;
     private EventLoopGroup group;
     private Bootstrap b;
