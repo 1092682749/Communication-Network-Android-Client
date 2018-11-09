@@ -8,12 +8,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.qingyun.myfirstapp.pojo.ChatMsgRecord;
+import com.example.qingyun.myfirstapp.pojo.Observer;
 import com.example.qingyun.myfirstapp.utils.CacheMessage;
 import com.example.qingyun.myfirstapp.utils.NettyChatClient;
 
 import java.net.URISyntaxException;
 
-public class ChatMainActivity extends AppCompatActivity {
+public class ChatMainActivity extends AppCompatActivity implements Observer {
     NettyChatClient nettyChatClient = NettyChatClient.NETTY_CHAT_CLIENT;
 //    WebSocketClientHandler handler = WebSocketClientHandler.getInstance();
 

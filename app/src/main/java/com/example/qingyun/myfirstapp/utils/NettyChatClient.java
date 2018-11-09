@@ -3,6 +3,8 @@ package com.example.qingyun.myfirstapp.utils;
 import android.app.Service;
 
 import com.alibaba.fastjson.JSON;
+import com.example.qingyun.myfirstapp.MainActivity;
+import com.example.qingyun.myfirstapp.MyList;
 import com.example.qingyun.myfirstapp.pojo.ChatMsgRecord;
 
 import org.json.JSONObject;
@@ -34,7 +36,8 @@ import io.netty.util.concurrent.FutureListener;
 
 public enum  NettyChatClient {
     NETTY_CHAT_CLIENT();
-    String host = "119.29.s.88";
+//    String host = "dyz";
+    String host = "119.29.4.88";
     int port = 8000;
     private EventLoopGroup group;
     private Bootstrap b;
@@ -76,6 +79,13 @@ public enum  NettyChatClient {
                     System.out.println("连接成功");
                 }
             });
+//            ChannelFuture future = this.cf.channel().closeFuture().sync();
+//            future.addListener(new ChannelFutureListener() {
+//                @Override
+//                public void operationComplete(ChannelFuture future) throws Exception {
+//                    System.out.println("链接已关闭");
+//                }
+//            });
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -93,11 +103,15 @@ public enum  NettyChatClient {
     }
     // 暂时以String代替消息对象
     public void write(String msg) {
+        if(msg.equals("close")){
+            this.cf.channel().close();
+            return;
+        }
         System.out.println("send..." + msg);
         ChatMsgRecord chatMsgRecord = new ChatMsgRecord();
         chatMsgRecord.setContent(msg);
-        chatMsgRecord.setSendname("client1");
-        chatMsgRecord.setReceivename("server");
+        chatMsgRecord.setSendname(MainActivity.user);
+        chatMsgRecord.setReceivename(MyList.receiveName);
         String json = JSON.toJSONString(chatMsgRecord);
         System.out.println(json);
         ChannelFuture channelFuture = getChannelFuture();

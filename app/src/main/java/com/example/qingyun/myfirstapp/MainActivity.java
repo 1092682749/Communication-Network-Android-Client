@@ -20,6 +20,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.qingyun.myfirstapp.service.RequestService;
@@ -57,7 +58,7 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity implements Runnable {
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
-    String host = "192.168.0.181";
+    String host = "dyzhello.club";
     Integer port = 8080;
     Socket socket = null;
     EventLoopGroup workerGroup = null;
@@ -68,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements Runnable {
     Button luyinBtn;
     Long recorderStartTime;
     Long recorderEndTime;
-    public static String user = "admin";
+    public static String user = "123";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -328,10 +329,14 @@ public class MainActivity extends AppCompatActivity implements Runnable {
     }
     public void toList(View view){
         Intent intent = new Intent(this,ListView.class);
+        TextView t = findViewById(R.id.editText);
+        user = t.getText().toString().trim();
         startActivity(intent);
     }
     public void toMyList(View view){
         Intent intent = new Intent(this,MyList.class);
+        TextView t = findViewById(R.id.editText);
+        user = t.getText().toString().trim();
         startActivity(intent);
     }
 }

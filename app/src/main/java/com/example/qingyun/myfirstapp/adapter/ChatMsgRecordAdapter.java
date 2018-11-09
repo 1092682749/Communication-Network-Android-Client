@@ -23,18 +23,13 @@ public class ChatMsgRecordAdapter extends ArrayAdapter<ChatMsgRecord> {
             this.itemList = (LinkedList<ChatMsgRecord>) objects;
             this.context = context;
             this.resource = resource;
-
     }
 
-    @Override
-    public void add(ChatMsgRecord object) {
-        itemList.add(object);
-    }
+//    @Override
+//    public void add(ChatMsgRecord object) {
+//        itemList.add(object);
+//    }
 
-    @Override
-    public void clear() {
-        itemList.clear();
-    }
 
     @Override
     public int getCount() {
@@ -65,17 +60,9 @@ public class ChatMsgRecordAdapter extends ArrayAdapter<ChatMsgRecord> {
         } else {
             view = LayoutInflater.from(context).inflate(R.layout.left_item, null);
             ((TextView)view.findViewById(R.id.left_text)).setText(chatMsgRecord.getContent());
+            System.out.print(chatMsgRecord.getContent());
         }
         return view;
     }
 
-    @Override
-    public int getItemViewType(int position) {
-        return super.getItemViewType(position);
-    }
-
-    @Override
-    public int getViewTypeCount() {
-        return super.getViewTypeCount();
-    }
 }

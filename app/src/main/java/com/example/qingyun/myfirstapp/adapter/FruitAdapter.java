@@ -12,12 +12,13 @@ import android.widget.TextView;
 import com.example.qingyun.myfirstapp.R;
 import com.example.qingyun.myfirstapp.pojo.Fruit;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 public class FruitAdapter extends ArrayAdapter<Fruit> {
     private int resourceID;
     private final Logger logger = Logger.getLogger(FruitAdapter.class.getName());
-    public FruitAdapter( Context context,  int textViewResourceId, Fruit[] objects) {
+    public FruitAdapter( Context context,  int textViewResourceId, List objects) {
         super(context, textViewResourceId, objects);
         this.resourceID = textViewResourceId;
     }
