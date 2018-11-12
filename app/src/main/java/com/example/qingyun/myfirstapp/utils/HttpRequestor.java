@@ -1,5 +1,7 @@
 package com.example.qingyun.myfirstapp.utils;
 
+import com.alibaba.fastjson.JSON;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,6 +10,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.InetSocketAddress;
+import java.net.MalformedURLException;
 import java.net.Proxy;
 import java.net.URL;
 import java.net.URLConnection;
@@ -88,26 +91,28 @@ public class HttpRequestor {
 
         /* Translate parameter map to parameter date string */
         StringBuffer parameterBuffer = new StringBuffer();
+        String jsonParams = "";
         if (parameterMap != null) {
-            Iterator iterator = parameterMap.keySet().iterator();
-            String key = null;
-            String value = null;
-            while (iterator.hasNext()) {
-                key = (String)iterator.next();
-                if (parameterMap.get(key) != null) {
-                    value = (String)parameterMap.get(key);
-                } else {
-                    value = "";
-                }
-
-                parameterBuffer.append(key).append("=").append(value);
-                if (iterator.hasNext()) {
-                    parameterBuffer.append("&");
-                }
-            }
+//            Iterator iterator = parameterMap.keySet().iterator();
+//            String key = null;
+//            String value = null;
+//            while (iterator.hasNext()) {
+//                key = (String)iterator.next();
+//                if (parameterMap.get(key) != null) {
+//                    value = (String)parameterMap.get(key);
+//                } else {
+//                    value = "";
+//                }
+//
+//                parameterBuffer.append(key).append("=").append(value);
+//                if (iterator.hasNext()) {
+//                    parameterBuffer.append("&");
+//                }
+//            }
+            jsonParams = JSON.toJSONString(parameterMap);
         }
 
-        System.out.println("POST parameter : " + parameterBuffer.toString());
+        System.out.println("POST parameter : " + jsonParams);
 
         URL localURL = new URL(url);
 
@@ -117,8 +122,8 @@ public class HttpRequestor {
         httpURLConnection.setDoOutput(true);
         httpURLConnection.setRequestMethod("POST");
         httpURLConnection.setRequestProperty("Accept-Charset", charset);
-        httpURLConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-        httpURLConnection.setRequestProperty("Content-Length", String.valueOf(parameterBuffer.length()));
+        httpURLConnection.setRequestProperty("Content-Type", "application/json");
+//        httpURLConnection.setRequestProperty("Content-Length", String.valueOf(parameterBuffer.length()));
 
         OutputStream outputStream = null;
         OutputStreamWriter outputStreamWriter = null;
@@ -132,7 +137,7 @@ public class HttpRequestor {
             outputStream = httpURLConnection.getOutputStream();
             outputStreamWriter = new OutputStreamWriter(outputStream);
 
-            outputStreamWriter.write(parameterBuffer.toString());
+            outputStreamWriter.write(jsonParams);
             outputStreamWriter.flush();
             //响应失败
             if (httpURLConnection.getResponseCode() >= 300) {
@@ -199,6 +204,63 @@ public class HttpRequestor {
         }
 
     }
+
+    public String submitFrom(String url, String method, Map paramsMap) throws Exception {
+        StringBuffer parameterBuffer = new StringBuffer();
+        if (paramsMap != null) {
+            Iterator iterator = paramsMap.keySet().iterator();
+            String key = null;
+            String value = null;
+            while (iterator.hasNext()) {
+                key = (String) iterator.next();
+                if (paramsMap.get(key) != null) {
+                    value = (String) paramsMap.get(key);
+                } else {
+                    value = "";
+                }
+
+                parameterBuffer.append(key).append("=").append(value);
+                if (iterator.hasNext()) {
+                    parameterBuffer.append("&");
+                }
+            }
+        }
+        URL localURL = new URL(url);
+        StringBuffer response = new StringBuffer();
+        String line = "";
+        URLConnection connection = null;
+        OutputStreamWriter osw = null;
+        try{
+            connection = this.openConnection(localURL);
+            HttpURLConnection httpURLConnection = (HttpURLConnection)connection;
+
+            httpURLConnection.setRequestMethod(method);
+
+            httpURLConnection.setDoOutput(true);
+            httpURLConnection.setDoInput(true);
+            httpURLConnection.setUseCaches(false);
+            httpURLConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            httpURLConnection.setRequestProperty("Accept","application/json");
+            httpURLConnection.connect();
+            osw = new OutputStreamWriter(httpURLConnection.getOutputStream(), "UTF-8");
+            osw.write(parameterBuffer.toString());
+            osw.flush();
+            if (httpURLConnection.getResponseCode() > 300) {
+                throw new Exception("请求失败");
+            }
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
+            while ((line = reader.readLine()) != null){
+                response.append(line);
+            }
+        }finally {
+            if (osw != null){
+                osw.close();
+            }
+        }
+        return response.toString();
+    }
+
 
     /*
      * Getter & Setter

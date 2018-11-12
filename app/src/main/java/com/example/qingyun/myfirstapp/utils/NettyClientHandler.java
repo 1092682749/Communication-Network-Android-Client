@@ -17,7 +17,7 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 //        System.out.println("服务器消息：" + msg.toString());
         ChatMsgRecord chatMsgRecord = (ChatMsgRecord)JsonToBean.changeObject(msg.toString(),ChatMsgRecord.class);
-        chatMsgRecord.setContent(chatMsgRecord.getContent()+"(测试版本消息为服务器固定应答，注册功能上线后开放真实服务)");
+        chatMsgRecord.setContent(chatMsgRecord.getContent());
         CacheMessage.setMessage(chatMsgRecord);
     }
 

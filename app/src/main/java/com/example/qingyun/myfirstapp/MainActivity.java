@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.media.MediaRecorder;
 import android.os.Build;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
@@ -55,10 +56,12 @@ import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.Socket;
 import java.net.URL;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity implements Runnable {
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
-    String host = "dyzhello.club";
+    public static String host = "dyzhello.club";
     Integer port = 8080;
     Socket socket = null;
     EventLoopGroup workerGroup = null;
@@ -70,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements Runnable {
     Long recorderStartTime;
     Long recorderEndTime;
     public static String user = "123";
+    Handler handler = new Handler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,6 +112,20 @@ public class MainActivity extends AppCompatActivity implements Runnable {
                 return false;
             }
         });
+        Intent intent = new Intent(MainActivity.this, LoginActive.class);
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        System.out.print("延时任务");
+                        startActivity(intent);
+                    }
+                });
+            }
+        },3000);
+
     }
     public void login(View view){
 //        startService(new Intent(this,RequestService.class));

@@ -7,6 +7,7 @@
     tools:context=".MainActivity">
 
     <EditText
+        android:visibility="invisible"
         android:id="@+id/editText"
         android:layout_width="203dp"
         android:layout_height="80dp"
@@ -22,6 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:visibility="invisible"
         android:id="@+id/button"
         android:layout_width="0dp"
         android:layout_height="47dp"
@@ -38,6 +40,7 @@
         tools:text="@string/edit_message" />
 
     <Button
+        android:visibility="invisible"
         android:id="@+id/ImageCapture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -50,6 +53,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:visibility="invisible"
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -65,6 +69,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <Button
+        android:visibility="invisible"
         android:id="@+id/luyin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -80,6 +85,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
+        android:visibility="invisible"
         android:id="@+id/auroraChat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -95,13 +101,12 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
+        android:visibility="invisible"
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="toList"
-        android:text="toList"
-        tools:layout_editor_absoluteX="58dp"
-        tools:layout_editor_absoluteY="385dp" />
+        android:text="toList" />
 
     <Button
         android:id="@+id/button3"
@@ -115,5 +120,15 @@
         android:text="toMyList"
         app:layout_constraintBottom_toTopOf="@+id/ImageCapture"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/editText"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Welcome"
+        android:gravity="center"
+        android:textSize="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/auroraChat" />
 </android.support.constraint.ConstraintLayout>

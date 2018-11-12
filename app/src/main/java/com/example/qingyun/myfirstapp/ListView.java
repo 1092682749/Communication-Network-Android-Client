@@ -10,9 +10,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.example.qingyun.myfirstapp.adapter.FruitAdapter;
+import com.example.qingyun.myfirstapp.adapter.UserAdapter;
 import com.example.qingyun.myfirstapp.pojo.Fruit;
 import com.example.qingyun.myfirstapp.pojo.User;
 import com.example.qingyun.myfirstapp.utils.HttpRequestor;
@@ -21,10 +23,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListView extends AppCompatActivity {
-    List<User> users = null;
+    List<User> users = new ArrayList<>();
     List<Fruit> fruits = new ArrayList<>();
     Handler handler = new Handler();
-    FruitAdapter adapter = null;
+    UserAdapter adapter = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,24 +40,19 @@ public class ListView extends AppCompatActivity {
         thread.start();
 
 
-        fruits.add(new Fruit("健身水果",R.drawable.one));
-        fruits.add(new Fruit("水果一",R.drawable.three));
-        fruits.add(new Fruit("水果②",R.drawable.tow));
-        fruits.add(new Fruit("水果③",R.drawable.four));
-        fruits.add(new Fruit("水果④",R.drawable.five));
-        adapter = new FruitAdapter(
+        adapter = new UserAdapter(
                 ListView.this,
-                R.layout.fruit_item,
-                fruits
+                R.layout.friend_item,
+                users
                 );
-        System.out.print("sss");
+
         final android.widget.ListView listView = (android.widget.ListView)findViewById(R.id.list_view);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ListView.this,MyList.class);
-                intent.putExtra("username",((TextView)view.findViewById(R.id.fruit_id)).getText());
+                intent.putExtra("username",((TextView)view.findViewById(R.id.friend_id)).getText());
                 startActivity(intent);
 //                listView.setSelection(listView.getBottom());
             }
@@ -71,18 +68,42 @@ public class ListView extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            List<User> users = JSON.parseArray(resp).toJavaList(User.class);
-            users.forEach(user -> {
-                Fruit fruit = new Fruit(user.getUsername(),R.drawable.five);
-                fruits.add(fruit);
-            });
+            List<User> list = JSON.parseArray(resp).toJavaList(User.class);
+            list.forEach(item -> ListView.this.users.add(item));
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-                    android.widget.ListView listView = findViewById(R.id.list_view);
                     adapter.notifyDataSetChanged();
                 }
             });
         }
     };
+    private boolean isQuit = false;
+
+    @Override
+    public void onBackPressed() {
+
+        if (!isQuit) {
+            Toast.makeText(ListView.this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+            isQuit = true;
+
+            //这段代码意思是,在两秒钟之后isQuit会变成false
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } finally {
+                        isQuit = false;
+                    }
+                }
+            }).start();
+
+
+        } else {
+            System.exit(0);
+        }
+    }
 }

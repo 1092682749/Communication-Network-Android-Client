@@ -3,12 +3,11 @@
     package="com.example.qingyun.myfirstapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -46,7 +45,7 @@
             android:exported="true" />
         <!-- 后台服务-长连接 -->
         <activity android:name=".ChatMainActivity" />
-        <!--<activity android:name=".MainActivity" />-->
+        <!-- <activity android:name=".MainActivity" /> -->
         <activity android:name=".FriendListActivity" />
 
         <service
@@ -56,7 +55,9 @@
 
         <activity android:name=".AuroraActivity" />
         <activity android:name=".ListView" />
-        <activity android:name=".MyList"></activity>
+        <activity android:name=".MyList" />
+        <activity android:name=".LoginActive" />
+        <activity android:name=".Regist"></activity>
     </application>
 
 </manifest>
