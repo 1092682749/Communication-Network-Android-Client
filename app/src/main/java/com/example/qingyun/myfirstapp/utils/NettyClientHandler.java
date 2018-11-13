@@ -1,5 +1,7 @@
 package com.example.qingyun.myfirstapp.utils;
 
+import com.example.qingyun.myfirstapp.MainActivity;
+import com.example.qingyun.myfirstapp.MyList;
 import com.example.qingyun.myfirstapp.pojo.ChatMsgRecord;
 import com.example.qingyun.myfirstapp.utils.json.JsonToBean;
 

@@ -9,8 +9,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
 import com.example.qingyun.myfirstapp.pojo.User;
 import com.example.qingyun.myfirstapp.utils.HttpRequestor;
+
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -50,20 +53,33 @@ public class Regist extends AppCompatActivity {
         map.put("username",username);
         map.put("nickName",nickname);
         map.put("password",password);
+        // 开启网络请求线程
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
+                    // 请求并将消息转换
                     response = requestor.doPost("https://" + MainActivity.host + "/ok/save", map);
                     System.out.println(response);
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(Regist.this, "注册成功!", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(Regist.this, LoginActive.class);
-                            startActivity(intent);
+                    com.alibaba.fastjson.JSONObject jsonObject = JSON.parseObject(response);
+                    if (jsonObject.getString("msg").equals("注册成功")) {
+                        // 更新视图
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(Regist.this, "注册成功!", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(Regist.this, LoginActive.class);
+                                startActivity(intent);
+                            }
+                        });
+                    } else {
+                        handler.post( new Runnable() {
+                                @Override
+                                public void run() {
+                                Toast.makeText(Regist.this, jsonObject.getString("msg"), Toast.LENGTH_SHORT).show();
                         }
-                    });
+                        });
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

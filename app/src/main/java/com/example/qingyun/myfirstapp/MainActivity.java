@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements Runnable {
     Long recorderEndTime;
     public static String user = "123";
     Handler handler = new Handler();
+    public static String receivename = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

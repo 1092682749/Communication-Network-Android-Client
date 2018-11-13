@@ -52,7 +52,7 @@ public class ListView extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ListView.this,MyList.class);
-                intent.putExtra("username",((TextView)view.findViewById(R.id.friend_id)).getText());
+                intent.putExtra("receivename",((TextView)view.findViewById(R.id.friend_id)).getText());
                 startActivity(intent);
 //                listView.setSelection(listView.getBottom());
             }
@@ -103,7 +103,15 @@ public class ListView extends AppCompatActivity {
 
 
         } else {
-            System.exit(0);
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_MAIN);
+                    intent.addCategory(Intent.CATEGORY_HOME);
+                    startActivity(intent);
+                }
+            });
         }
     }
 }

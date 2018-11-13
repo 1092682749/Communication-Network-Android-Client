@@ -9,6 +9,8 @@ import com.example.qingyun.myfirstapp.pojo.ChatMsgRecord;
 
 import org.json.JSONObject;
 
+import java.util.Date;
+
 import javax.net.ssl.SSLEngine;
 
 import io.netty.bootstrap.Bootstrap;
@@ -107,11 +109,12 @@ public enum  NettyChatClient {
             this.cf.channel().close();
             return;
         }
-        System.out.println("send..." + msg);
         ChatMsgRecord chatMsgRecord = new ChatMsgRecord();
         chatMsgRecord.setContent(msg);
         chatMsgRecord.setSendname(MainActivity.user);
         chatMsgRecord.setReceivename(MyList.receiveName);
+        chatMsgRecord.setAddtime(new Date());
+        chatMsgRecord.setType(1);
         String json = JSON.toJSONString(chatMsgRecord);
         System.out.println(json);
         ChannelFuture channelFuture = getChannelFuture();
