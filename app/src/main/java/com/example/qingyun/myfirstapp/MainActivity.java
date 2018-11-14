@@ -113,6 +113,7 @@ public class MainActivity extends AppCompatActivity implements Runnable {
                 return false;
             }
         });
+//        Intent intent = new Intent(MainActivity.this, test_unit.class);
         Intent intent = new Intent(MainActivity.this, LoginActive.class);
         new Timer().schedule(new TimerTask() {
             @Override

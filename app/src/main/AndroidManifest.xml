@@ -57,7 +57,8 @@
         <activity android:name=".ListView" />
         <activity android:name=".MyList" />
         <activity android:name=".LoginActive" />
-        <activity android:name=".Regist"></activity>
+        <activity android:name=".Regist" />
+        <activity android:name=".test_unit"></activity>
     </application>
 
 </manifest>

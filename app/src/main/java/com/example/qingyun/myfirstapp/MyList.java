@@ -1,14 +1,18 @@
 package com.example.qingyun.myfirstapp;
 
 import android.app.ActivityManager;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Process;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -65,7 +69,16 @@ public class MyList extends AppCompatActivity implements Observer {
             // 判断是否后台运行，是的话通知栏广播
             isRuningOnBackground(msgRecord);
             // 将消息添加到list
-            chatMsgRecords.add(msgRecord);
+            if (msgRecord.getSendname().equals(receiveName)) {
+                chatMsgRecords.add(msgRecord);
+            } else if (msgRecord.getSendname().equals("system")){
+                 nettyChatClient.getChannelFuture().channel().close();
+                 chatMsgRecords.add(msgRecord);
+                 handler.post(showDialog);
+//                new FireMissilesDialogFragment().onCreateDialog();
+            } else {
+                return;
+            }
             try {
                 // 将消息设置为已读状态
                 Constant.httpRequestor.doGet(protocol + MainActivity.host + "/ok/already?sendName=" + MainActivity.user + "&receiveName=" + MyList.receiveName);
@@ -89,9 +102,15 @@ public class MyList extends AppCompatActivity implements Observer {
         EditText editText = findViewById(R.id.my_list_input);
         ChatMsgRecord chatMsgRecord = new ChatMsgRecord();
         chatMsgRecord.setSendname(MainActivity.user);
+        if ("".equals(editText.getText().toString())) {
+            Toast.makeText(MyList.this, "输入不能为空", Toast.LENGTH_SHORT).show();
+            return;
+        }
         chatMsgRecord.setContent(editText.getText().toString());
         chatMsgRecords.add(chatMsgRecord);
         adapter.notifyDataSetChanged();
+        ListView listView = findViewById(R.id.my_list);
+        listView.setSelection(listView.getBottom());
         String content = editText.getText().toString();
         editText.setText("");
         nettyChatClient.write(content);
@@ -123,7 +142,8 @@ public class MyList extends AppCompatActivity implements Observer {
 //        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
 //        发送过来的消息发送名是本方的接收名
         intent.putExtra("receivename", chatMsgRecord.getSendname());
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
+        //        PendingIntent.FLAG_UPDATE_CURRENT该字段表示保留之前的intent并添加新的Intent属性
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, "1")
                 .setSmallIcon(R.drawable.app_icon_png)
@@ -132,7 +152,6 @@ public class MyList extends AppCompatActivity implements Observer {
                 .setAutoCancel(true)
                 .setContentIntent(pendingIntent)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-
 // notificationId is a unique int for each notification that you must define
         notificationManager.notify(1, mBuilder.build());
     }
@@ -143,6 +162,7 @@ public class MyList extends AppCompatActivity implements Observer {
         for (ActivityManager.RunningAppProcessInfo info : processes){
             if (info.processName.equals(MyList.this.getPackageName())) {
                 System.out.print("info is #######" + info.processName + "and packname is######" + MyList.this.getPackageName());
+                // 判断是否在后台运行，如果是发起通知栏通知
                 if (info.importance == ActivityManager.RunningAppProcessInfo.IMPORTANCE_BACKGROUND) {
                     handler.post(new Runnable() {
                         @Override
@@ -176,6 +196,8 @@ public class MyList extends AppCompatActivity implements Observer {
         // 查询历史聊天记录
 //        intent = getIntent();
         receiveName = intent.getStringExtra("receivename");
+        System.out.println("rrrrrrrrrrrrrrrrrrrrrrr"+receiveName);
+        System.out.println("sssssssssssssssssss"+MainActivity.user);
         super.onResume();
         new Thread() {
             @Override
@@ -195,4 +217,19 @@ public class MyList extends AppCompatActivity implements Observer {
             }
         }.start();
     }
+    Runnable showDialog = new Runnable() {
+        @Override
+        public void run() {
+            AlertDialog.Builder builder = new AlertDialog.Builder(MyList.this);
+            Dialog dialog = builder.setTitle("警告").setMessage("重复登录链接关闭").setNegativeButton("确定", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent intent = new Intent(MyList.this, LoginActive.class);
+                    startActivity(intent);
+                }
+            }).create();
+            dialog.setCanceledOnTouchOutside(false);
+            dialog.show();
+        }
+    };
 }

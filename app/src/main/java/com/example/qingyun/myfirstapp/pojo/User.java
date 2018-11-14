@@ -10,6 +10,17 @@ public class User {
 
     private String nickName;
 
+
+    private String attachmentChannelType;
+
+    public String getAttachmentChannelType() {
+        return attachmentChannelType;
+    }
+
+    public void setAttachmentChannelType(String attachmentChannelType) {
+        this.attachmentChannelType = attachmentChannelType;
+    }
+
     public String getNickName() {
         return nickName;
     }

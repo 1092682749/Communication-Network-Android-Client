@@ -18,6 +18,7 @@ import com.example.qingyun.myfirstapp.adapter.UserAdapter;
 import com.example.qingyun.myfirstapp.pojo.Fruit;
 import com.example.qingyun.myfirstapp.pojo.User;
 import com.example.qingyun.myfirstapp.utils.HttpRequestor;
+import com.example.qingyun.myfirstapp.utils.NettyChatClient;
 
 import java.util.ArrayList;
 import java.util.List;

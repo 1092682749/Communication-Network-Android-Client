@@ -15,6 +15,16 @@ public class ChatMsgRecord implements Comparable<ChatMsgRecord> {
 
     private String content;
 
+    private String attachmentChannelType;
+
+    public String getAttachmentChannelType() {
+        return attachmentChannelType;
+    }
+
+    public void setAttachmentChannelType(String attachmentChannelType) {
+        this.attachmentChannelType = attachmentChannelType;
+    }
+
     public Integer getId() {
         return id;
     }

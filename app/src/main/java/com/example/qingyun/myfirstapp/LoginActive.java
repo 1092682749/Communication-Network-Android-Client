@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.example.qingyun.myfirstapp.utils.HttpRequestor;
+import com.example.qingyun.myfirstapp.utils.NettyChatClient;
 
 import org.json.JSONObject;
 
@@ -48,6 +49,8 @@ public class LoginActive extends AppCompatActivity {
                     com.alibaba.fastjson.JSONObject jb = JSON.parseObject(response);
                     if (jb.getString("msg").equals("登录成功!")){
                         MainActivity.user = username;
+                        // 建立连接
+                        NettyChatClient.getInstance().connect();
                         handler.post(new Runnable() {
                             @Override
                             public void run() {

@@ -79,6 +79,10 @@ public enum  NettyChatClient {
                 @Override
                 public void operationComplete(ChannelFuture future) throws Exception {
                     System.out.println("连接成功");
+                    ChatMsgRecord chatMsgRecord = new ChatMsgRecord();
+                    chatMsgRecord.setSendname(MainActivity.user);
+                    chatMsgRecord.setContent("channel注册请求");
+                    future.channel().writeAndFlush(JSON.toJSONString(chatMsgRecord));
                 }
             });
 //            ChannelFuture future = this.cf.channel().closeFuture().sync();
