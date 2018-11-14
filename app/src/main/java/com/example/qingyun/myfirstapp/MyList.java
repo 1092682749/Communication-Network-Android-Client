@@ -74,6 +74,7 @@ public class MyList extends AppCompatActivity implements Observer {
             } else if (msgRecord.getSendname().equals("system")){
                  nettyChatClient.getChannelFuture().channel().close();
                  chatMsgRecords.add(msgRecord);
+                 //展示弹出框，退出当前activity
                  handler.post(showDialog);
 //                new FireMissilesDialogFragment().onCreateDialog();
             } else {

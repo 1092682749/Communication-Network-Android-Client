@@ -75,11 +75,13 @@ public class MainActivity extends AppCompatActivity implements Runnable {
     public static String user = "123";
     Handler handler = new Handler();
     public static String receivename = "";
+    public static String serizablePath = "/sdcard/ncc/user/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA,Manifest.permission.RECORD_AUDIO},0);
+
+        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA,Manifest.permission.RECORD_AUDIO,Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE},0);
         luyinBtn = findViewById(R.id.luyin);
         luyinBtn.setOnTouchListener(new View.OnTouchListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
