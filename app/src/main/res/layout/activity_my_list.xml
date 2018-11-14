@@ -27,8 +27,8 @@
         <ImageButton
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:background="@drawable/yuyin" />
+            android:layout_height="wrap_content"
+            android:background="@drawable/yuyin_icon" />
         <EditText
             android:id="@+id/my_list_input"
             android:layout_width="0dp"
@@ -38,8 +38,8 @@
         <ImageButton
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:background="@drawable/biaoqing" />
+            android:layout_height="wrap_content"
+            android:background="@drawable/biaoqong_icon" />
 
         <Button
             android:id="@+id/my_list_send"
@@ -47,6 +47,8 @@
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:onClick="write"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="@color/textColorPrimary"
             android:text="发送" />
     </LinearLayout>
 

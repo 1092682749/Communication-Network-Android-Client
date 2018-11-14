@@ -101,9 +101,11 @@ public enum  NettyChatClient {
         //如果管道没有被开启或者被关闭了，那么重连
         if (this.cf == null) {
             this.connect();
+            System.out.println("注册管道");
         }
         if (!this.cf.channel().isActive()) {
             this.connect();
+            System.out.println("注册管道");
         }
         return this.cf;
     }

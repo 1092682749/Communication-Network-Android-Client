@@ -31,7 +31,7 @@ public class UserAdapter extends ArrayAdapter<User> {
         ImageView imageView = view.findViewById(R.id.friend_image);
         TextView idView = view.findViewById(R.id.friend_id);
         textView.setText(user.getNickName());
-        imageView.setImageResource(R.drawable.spring);
+        imageView.setImageResource(R.drawable.ntx);
         idView.setText(user.getUsername());
         System.out.println("zzzzzzzzzzzzzz");
         return view;

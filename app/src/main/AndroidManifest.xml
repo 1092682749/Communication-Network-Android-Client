@@ -58,7 +58,8 @@
         <activity android:name=".MyList" />
         <activity android:name=".LoginActive" />
         <activity android:name=".Regist" />
-        <activity android:name=".test_unit"></activity>
+        <activity android:name=".test_unit" />
+        <activity android:name=".PullToRefreshViewTest"></activity>
     </application>
 
 </manifest>

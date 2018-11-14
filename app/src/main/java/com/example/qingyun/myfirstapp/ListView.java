@@ -19,6 +19,7 @@ import com.example.qingyun.myfirstapp.pojo.Fruit;
 import com.example.qingyun.myfirstapp.pojo.User;
 import com.example.qingyun.myfirstapp.utils.HttpRequestor;
 import com.example.qingyun.myfirstapp.utils.NettyChatClient;
+import com.yalantis.phoenix.PullToRefreshView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +33,22 @@ public class ListView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_view);
+        setTitleColor(R.color.white);
+        setTitle("好友列表");
+//        下拉刷新组件
+        PullToRefreshView mPullToRefreshView = (PullToRefreshView)findViewById(R.id.pull_to_refresh);
+        mPullToRefreshView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                NettyChatClient.NETTY_CHAT_CLIENT.getChannelFuture();
+                mPullToRefreshView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mPullToRefreshView.setRefreshing(false);
+                    }
+                }, 1000);
+            }
+        });
 //        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
 //                ListView.this,
 //                android.R.layout.simple_list_item_1,

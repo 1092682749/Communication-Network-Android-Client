@@ -4,8 +4,9 @@
     android:layout_height="match_parent">
     <TextView
         android:id="@+id/right_text"
-        android:textColor="@color/qmui_config_color_red"
+        android:textColor="@color/colorPrimaryDark"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
+        android:layout_margin="10dp"
         android:gravity="center_vertical|right"/>
 </LinearLayout>

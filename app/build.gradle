@@ -51,6 +51,8 @@ dependencies {
     implementation 'cn.jiguang.imui:messagelist:0.7.4'
 // https://mvnrepository.com/artifact/com.jakewharton/butterknife
     implementation group: 'com.jakewharton', name: 'butterknife', version: '7.0.1'
+    implementation 'com.yalantis:phoenix:1.2.3'
+    implementation 'org.zackratos:ultimatebar:1.0.3'
 // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
 //    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.0'
 

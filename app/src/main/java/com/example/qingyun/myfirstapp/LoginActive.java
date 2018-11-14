@@ -33,6 +33,8 @@ public class LoginActive extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_active);
+        setTitle("登录");
+        setTitleColor(R.color.white);
         File userInfoPath = new File(MainActivity.serizablePath);
         ObjectInputStream ois = null;
         File loginUserOut = new File(MainActivity.serizablePath + "loginUser.out");

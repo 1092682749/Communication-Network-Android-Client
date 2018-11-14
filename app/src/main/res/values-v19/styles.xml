@@ -1,6 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="QMUI.Compat">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -8,6 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
         <!--<item name="android:textColorPrimary">@color/textColorPrimary</item>-->
         <!--<item name="android:textColor">@color/editTextColor</item>-->
+        <!--<item name="editTextColor">@color/editTextColor</item>-->
+        <!--<item name="actionBarTabTextStyle">@color/editTextColor</item>-->
+
         <!--<item name="android:windowTranslucentStatus">true</item>-->
     </style>
 </resources>

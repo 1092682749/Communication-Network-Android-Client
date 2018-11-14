@@ -25,6 +25,8 @@ public class Regist extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_regist);
+        setTitleColor(R.color.white);
+        setTitle("注册");
         Button button = findViewById(R.id.register_submit);
         button.setOnClickListener(new View.OnClickListener() {
             @Override

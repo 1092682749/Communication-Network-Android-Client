@@ -18,6 +18,8 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -27,6 +29,8 @@ import android.widget.Toast;
 import com.example.qingyun.myfirstapp.service.RequestService;
 import com.example.qingyun.myfirstapp.utils.HttpRequestor;
 import com.example.qingyun.myfirstapp.utils.TimeClientHandler;
+
+import org.zackratos.ultimatebar.UltimateBar;
 
 import butterknife.Bind;
 import io.netty.bootstrap.Bootstrap;
@@ -81,8 +85,16 @@ public class MainActivity extends AppCompatActivity implements Runnable {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // 设置透明状态栏
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//        }
         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA,Manifest.permission.RECORD_AUDIO,Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE},0);
         luyinBtn = findViewById(R.id.luyin);
+
+//        setTitle("Netty-Chat-Client");
+//        setTitleColor(R.color.white);
         luyinBtn.setOnTouchListener(new View.OnTouchListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
@@ -115,8 +127,8 @@ public class MainActivity extends AppCompatActivity implements Runnable {
                 return false;
             }
         });
-//        Intent intent = new Intent(MainActivity.this, test_unit.class);
         Intent intent = new Intent(MainActivity.this, LoginActive.class);
+//        Intent intent = new Intent(MainActivity.this, LoginActive.class);
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
@@ -131,6 +143,16 @@ public class MainActivity extends AppCompatActivity implements Runnable {
         },3000);
 
     }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            UltimateBar ultimateBar = new UltimateBar(this);
+            ultimateBar.setHintBar();
+        }
+    }
+
     public void login(View view){
 //        startService(new Intent(this,RequestService.class));
         Thread thread = new Thread(this);
@@ -361,4 +383,5 @@ public class MainActivity extends AppCompatActivity implements Runnable {
         user = t.getText().toString().trim();
         startActivity(intent);
     }
+
 }

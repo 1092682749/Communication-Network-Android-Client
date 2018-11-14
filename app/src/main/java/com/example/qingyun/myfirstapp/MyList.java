@@ -49,6 +49,8 @@ public class MyList extends AppCompatActivity implements Observer {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_list);
+        setTitle("对话");
+        setTitleColor(R.color.white);
         CacheMessage.observerMap.put(MainActivity.user, MyList.this);
         intent = getIntent();
         receiveName = intent.getStringExtra("receivename");
