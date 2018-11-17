@@ -6,8 +6,14 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <!--<item name="android:textColorPrimary">@color/textColorPrimary</item>-->
-        <!--<item name="android:textColor">@color/editTextColor</item>-->
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:textColor">@color/editTextColor</item>
         <!--<item name="android:windowTranslucentStatus">true</item>-->
+    </style>
+    <style name="text_subhead_black">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_title</item>
+        <item name="android:textSize">@dimen/text_subhead</item>
     </style>
 </resources>

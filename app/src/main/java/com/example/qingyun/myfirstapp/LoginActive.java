@@ -2,8 +2,10 @@ package com.example.qingyun.myfirstapp;
 
 import android.content.Intent;
 import android.os.Handler;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -137,4 +139,9 @@ public class LoginActive extends AppCompatActivity {
             }
         }.start();
     }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.action_menu, menu);
+//        return true;
+//    }
 }

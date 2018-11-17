@@ -55,11 +55,32 @@
 
         <activity android:name=".AuroraActivity" />
         <activity android:name=".ListView" />
-        <activity android:name=".MyList" />
+        <activity
+            android:name=".MyList"
+            android:parentActivityName=".ListView">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.qingyun.myfirstapp.ListView" />
+        </activity>
         <activity android:name=".LoginActive" />
         <activity android:name=".Regist" />
-        <activity android:name=".test_unit" />
-        <activity android:name=".PullToRefreshViewTest"></activity>
+        <activity
+            android:name=".test_unit"
+            android:parentActivityName=".MainActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.qingyun.myfirstapp.MainActivity" />
+        </activity>
+        <activity android:name=".PullToRefreshViewTest" />
+
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@xml/test_action_menu" />
+
+        <activity android:name=".CollectionDemoActivity" />
+        <activity android:name=".TestPopWindow"></activity>
     </application>
 
 </manifest>

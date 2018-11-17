@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements Runnable {
     Handler handler = new Handler();
     public static String receivename = "";
     public static String serizablePath = "/sdcard/ncc/user/";
+    public static String recorderPath = "/sdcard/ncc/voice/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -128,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements Runnable {
             }
         });
         Intent intent = new Intent(MainActivity.this, LoginActive.class);
-//        Intent intent = new Intent(MainActivity.this, LoginActive.class);
+//        Intent intent = new Intent(MainActivity.this, TestPopWindow.class);
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {

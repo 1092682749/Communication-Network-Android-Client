@@ -1,11 +1,19 @@
 package com.example.qingyun.myfirstapp;
 
+//import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Handler;
 import android.support.annotation.RequiresApi;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,6 +22,7 @@ import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.example.qingyun.myfirstapp.adapter.FruitAdapter;
+import com.example.qingyun.myfirstapp.adapter.MyPageAdapter;
 import com.example.qingyun.myfirstapp.adapter.UserAdapter;
 import com.example.qingyun.myfirstapp.pojo.Fruit;
 import com.example.qingyun.myfirstapp.pojo.User;
@@ -27,6 +36,7 @@ import java.util.List;
 public class ListView extends AppCompatActivity {
     List<User> users = new ArrayList<>();
     List<Fruit> fruits = new ArrayList<>();
+    List<View> items = new ArrayList<>();
     Handler handler = new Handler();
     UserAdapter adapter = null;
     @Override
@@ -35,6 +45,7 @@ public class ListView extends AppCompatActivity {
         setContentView(R.layout.activity_list_view);
         setTitleColor(R.color.white);
         setTitle("好友列表");
+
 //        下拉刷新组件
         PullToRefreshView mPullToRefreshView = (PullToRefreshView)findViewById(R.id.pull_to_refresh);
         mPullToRefreshView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
@@ -96,8 +107,53 @@ public class ListView extends AppCompatActivity {
             });
         }
     };
-    private boolean isQuit = false;
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.action_menu, menu);
+        // Define the listener
+        MenuItem.OnActionExpandListener expandListener = new MenuItem.OnActionExpandListener() {
+            @Override
+            public boolean onMenuItemActionCollapse(MenuItem item) {
+                // Do something when action item collapses
+                return true;  // Return true to collapse action view
+            }
+
+            @Override
+            public boolean onMenuItemActionExpand(MenuItem item) {
+                // Do something when expanded
+                return true;  // Return true to expand action view
+            }
+        };
+
+        // Get the MenuItem for the action item
+
+        // Assign the listener to that action item
+
+        // Any other things you have to do when creating the options menu...
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int i = item.getItemId();
+        switch (i) {
+            case R.id.action_logout:
+                NettyChatClient.NETTY_CHAT_CLIENT.getChannelFuture().channel().close();
+                Intent intent = new Intent(ListView.this, LoginActive.class);
+                startActivity(intent);
+                break;
+            case R.id.action_linkAuthor:
+                Toast.makeText(ListView.this, "作者QQ:1092682749", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.update_version:
+                Toast.makeText(ListView.this, "测试版本不提供下载请联系作者", Toast.LENGTH_SHORT).show();
+                break;
+        }
+        return true;
+    }
+
+    private boolean isQuit = false;
     @Override
     public void onBackPressed() {
 
