@@ -1,8 +1,12 @@
 package com.example.qingyun.myfirstapp;
 
 //import android.app.ActionBar;
+import android.app.DownloadManager;
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
+import android.os.Environment;
 import android.os.Handler;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.FragmentTransaction;
@@ -30,6 +34,7 @@ import com.example.qingyun.myfirstapp.utils.HttpRequestor;
 import com.example.qingyun.myfirstapp.utils.NettyChatClient;
 import com.yalantis.phoenix.PullToRefreshView;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,6 +87,7 @@ public class ListView extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ListView.this,MyList.class);
                 intent.putExtra("receivename",((TextView)view.findViewById(R.id.friend_id)).getText());
+                intent.putExtra("nickname", ((TextView)view.findViewById(R.id.friend_name)).getText());
                 startActivity(intent);
 //                listView.setSelection(listView.getBottom());
             }
@@ -147,7 +153,23 @@ public class ListView extends AppCompatActivity {
                 Toast.makeText(ListView.this, "作者QQ:1092682749", Toast.LENGTH_LONG).show();
                 break;
             case R.id.update_version:
-                Toast.makeText(ListView.this, "测试版本不提供下载请联系作者", Toast.LENGTH_SHORT).show();
+                DownloadManager.Request request = new DownloadManager.Request(Uri.parse("https://dyzhello.club/../uploads/app.apk"));
+                //设置在什么网络情况下进行下载
+                request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI);
+                //设置通知栏标题
+                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
+                request.setTitle("下载墨墨");
+                request.setDescription("下载中...");
+                request.setAllowedOverRoaming(false);
+                File path = new File(MainActivity.appSavePath);
+                if (!path.exists()) {
+                    path.mkdirs();
+                }
+                //设置文件存放目录
+                request.setDestinationInExternalFilesDir(this, Environment.DIRECTORY_DOCUMENTS, MainActivity.appSavePath + "ncc.apk");
+                DownloadManager downManager = (DownloadManager)getSystemService(Context.DOWNLOAD_SERVICE);
+                Long id= downManager.enqueue(request);
+                Toast.makeText(ListView.this, "文件将被下载至/sdcard/ncc/appFile/下", Toast.LENGTH_SHORT).show();
                 break;
         }
         return true;

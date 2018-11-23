@@ -58,5 +58,6 @@ dependencies {
     implementation 'org.zackratos:ultimatebar:1.0.3'
 // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
 //    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.0'
+    implementation 'com.github.lguipeng:BubbleView:1.0.1'
 
 }

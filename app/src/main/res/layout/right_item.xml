@@ -1,12 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--<TextView-->
+        <!--android:textColor="@color/colorPrimaryDark"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:layout_margin="10dp"-->
+        <!--android:gravity="center_vertical|right"/>-->
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical|right">
+    <com.github.library.bubbleview.BubbleLinearLayout
+        android:visibility="gone"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:arrowWidth="8dp"
+        app:angle="4dp"
+        app:arrowHeight="10dp"
+        app:arrowPosition="10dp"
+        app:arrowLocation="right"
+        app:bubbleColor="@color/colorPrimaryDark"
+        app:arrowCenter="true"
+        android:id="@+id/voice_send"
+        android:layout_width="100dp"
+        android:layout_height="35dp">
+        <ImageView
+            android:src="@drawable/voice_right_a"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"/>
+        <TextView
+            android:textColor="@android:color/white"
+            android:layout_marginRight="4dp"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </com.github.library.bubbleview.BubbleLinearLayout>
+
+    <com.github.library.bubbleview.BubbleTextView
         android:id="@+id/right_text"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_margin="10dp"
-        android:gravity="center_vertical|right"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|right"
+        android:layout_marginRight="10dp"
+        android:gravity="center_vertical|right"
+        android:padding="10dp"
+        android:text="Hello BubbleTextVew"
+        android:textColor="@android:color/white"
+        app:angle="8dp"
+        app:arrowCenter="true"
+        app:arrowHeight="10dp"
+        app:arrowLocation="right"
+        app:arrowPosition="14dp"
+        app:arrowWidth="8dp"
+        app:bubbleColor="@color/colorPrimaryDark" />
+    <com.github.library.bubbleview.BubbleImageView
+        android:id="@+id/send_header"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/myself"/>
+
+</LinearLayout>
 </LinearLayout>

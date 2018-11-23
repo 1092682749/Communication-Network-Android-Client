@@ -34,7 +34,11 @@ public class ChatMainActivity extends AppCompatActivity implements Observer {
     public void write(View view){
         EditText editText = findViewById(R.id.chatText);
         String content = editText.getText().toString();
-        nettyChatClient.write(content);
+        try {
+            nettyChatClient.write(content);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setMessage(Object o) {

@@ -1,11 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/left_text"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--<TextView-->
+
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:gravity="center_vertical|left"-->
+        <!--android:layout_margin="10dp"/>-->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:gravity="center_vertical|left"
-        android:layout_margin="10dp"/>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <com.github.library.bubbleview.BubbleImageView
+            android:id="@+id/receive_header"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/client"/>
+        <com.github.library.bubbleview.BubbleTextView
+            android:id="@+id/left_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello BubbleTextVew"
+            android:padding="10dp"
+            android:layout_gravity="center_vertical|left"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical|left"
+            android:textColor="@android:color/white"
+            app:arrowWidth="8dp"
+            app:angle="8dp"
+            app:arrowHeight="10dp"
+            app:arrowPosition="14dp"
+            app:arrowLocation="left"
+            app:arrowCenter="true"
+            app:bubbleColor="@color/receiveColor"/>
+        <com.github.library.bubbleview.BubbleLinearLayout
+            android:orientation="horizontal"
+            app:arrowWidth="8dp"
+            app:angle="4dp"
+            app:arrowHeight="10dp"
+            app:arrowPosition="10dp"
+            app:arrowLocation="left"
+            app:bubbleColor="@color/receiveColor"
+            app:arrowCenter="true"
+            android:id="@+id/receive_voice"
+            android:layout_width="100dp"
+            android:gravity="center"
+            android:layout_height="35dp"
+            android:visibility="gone"
+            android:layout_marginLeft="10dp">
+        <ImageView
+
+            android:src="@drawable/voice_left_a"
+            android:layout_gravity="center"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+        <TextView
+            android:textColor="@android:color/white"
+            android:layout_marginRight="4dp"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        </com.github.library.bubbleview.BubbleLinearLayout>
+    </LinearLayout>
+
 </LinearLayout>

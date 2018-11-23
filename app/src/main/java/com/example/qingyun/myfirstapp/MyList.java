@@ -10,7 +10,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.media.MediaRecorder;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Process;
@@ -41,15 +44,27 @@ import com.example.qingyun.myfirstapp.pojo.Observer;
 import com.example.qingyun.myfirstapp.utils.CacheMessage;
 import com.example.qingyun.myfirstapp.utils.Constant;
 import com.example.qingyun.myfirstapp.utils.HttpRequestor;
+import com.example.qingyun.myfirstapp.utils.NetWorkServer;
+import com.example.qingyun.myfirstapp.utils.NetWorkServerListener;
 import com.example.qingyun.myfirstapp.utils.NettyChatClient;
+import com.example.qingyun.myfirstapp.utils.json.JsonToBean;
 
 import org.json.JSONArray;
 
+import java.io.BufferedOutputStream;
+import java.io.BufferedWriter;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.Base64;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class MyList extends AppCompatActivity implements Observer {
     public static Handler handler = new Handler();
@@ -58,6 +73,7 @@ public class MyList extends AppCompatActivity implements Observer {
     List<ChatMsgRecord> chatMsgRecords = null;
     ChatMsgRecordAdapter adapter = null;
     public static String receiveName;
+    public static String nickname;
     public static String protocol = "https://";
     public ImageView voiceView;
     public PopupWindow voiceWindow;
@@ -65,12 +81,14 @@ public class MyList extends AppCompatActivity implements Observer {
     public MediaRecorder recorder;
     public Long recorderStartTime;
     public Long recrderEndTime;
+    public File voiceFile;
+    public ChatMsgRecord responseChatMsgRecored;
     //    android.widget.ListView listView = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_list);
-        setTitle("对话");
+//        setTitle("对话");
         // 设置返回按钮
         ActionBar ab = getSupportActionBar();
         voice(); // 录音按钮响应事件
@@ -80,6 +98,7 @@ public class MyList extends AppCompatActivity implements Observer {
         CacheMessage.observerMap.put(MainActivity.user, MyList.this);
         intent = getIntent();
         receiveName = intent.getStringExtra("receivename");
+        nickname = intent.getStringExtra("receivename");
         MainActivity.receivename = receiveName;
         chatMsgRecords = new LinkedList<>();
         Toast.makeText(this, receiveName, Toast.LENGTH_SHORT).show();
@@ -131,7 +150,7 @@ public class MyList extends AppCompatActivity implements Observer {
     }
 
     // 发送触发事件
-    public void write(View view) {
+    public void write(View view) throws InterruptedException {
         EditText editText = findViewById(R.id.my_list_input);
         ChatMsgRecord chatMsgRecord = new ChatMsgRecord();
         chatMsgRecord.setSendname(MainActivity.user);
@@ -142,6 +161,7 @@ public class MyList extends AppCompatActivity implements Observer {
         chatMsgRecord.setContent(editText.getText().toString());
         chatMsgRecords.add(chatMsgRecord);
         adapter.notifyDataSetChanged();
+        // 滚动到底部
         ListView listView = findViewById(R.id.my_list);
         listView.setSelection(listView.getBottom());
         String content = editText.getText().toString();
@@ -233,8 +253,10 @@ public class MyList extends AppCompatActivity implements Observer {
         // 查询历史聊天记录
 //        intent = getIntent();
         receiveName = intent.getStringExtra("receivename");
+        nickname = intent.getStringExtra("nickname");
         System.out.println("rrrrrrrrrrrrrrrrrrrrrrr" + receiveName);
         System.out.println("sssssssssssssssssss" + MainActivity.user);
+        setTitle(nickname);
         super.onResume();
         new Thread() {
             @Override
@@ -340,7 +362,7 @@ public class MyList extends AppCompatActivity implements Observer {
                         if (!filePath.exists()) {
                             filePath.mkdirs();
                         }
-                        File voiceFile = new File(filePath,System.currentTimeMillis() + "MyAppVoice.mp3");
+                        voiceFile = new File(filePath,System.currentTimeMillis() + "MyAppVoice.mp3");
                         if (!voiceFile.exists()) {
                             try {
                                 voiceFile.createNewFile();
@@ -365,6 +387,64 @@ public class MyList extends AppCompatActivity implements Observer {
                         recorder.stop();
                         recorder.reset();
                         recorder.release();
+                        if (voiceFile != null) {
+                            try {
+                                // 读取文件并发送
+                                byte[] bytes = new byte[1024];
+                                FileInputStream fis = new FileInputStream(voiceFile);
+                                int len = 0;
+                                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                                 while ((len = fis.read(bytes)) != -1) {
+                                     bos.write(bytes, 0, len);
+                                 }
+
+                                String voiceBase64 = Base64.getEncoder().encodeToString(bos.toByteArray());
+                                 Map<String, String> map = new HashMap<>();
+                                 map.put("content", voiceBase64);
+                                new NetWorkServer().setNetWorkServerListener(
+                                        new NetWorkServerListener() {
+                                            @Override
+                                            public void onSuccessed(Object response) {
+                                                System.out.println((String) response);
+                                                responseChatMsgRecored = (ChatMsgRecord) JsonToBean.changeObject((String) response,ChatMsgRecord.class);
+                                                responseChatMsgRecored.setSendname(MainActivity.user);
+                                                responseChatMsgRecored.setReceivename(MainActivity.receivename);
+                                                chatMsgRecords.add(responseChatMsgRecored);
+
+                                                responseChatMsgRecored.setMsgtype(2);
+                                                try {
+                                                    nettyChatClient.write(responseChatMsgRecored);
+                                                } catch (InterruptedException e) {
+                                                    e.printStackTrace();
+                                                }
+                                                handler.post(runnable);
+                                            }
+
+                                            @Override
+                                            public void onFailed(Object message) {
+                                                System.out.println("failed");
+                                            }
+                                        }
+                                ).request("post","https://dyzhello.club/ok/saveVoice", map);
+                                System.out.println(voiceBase64);
+//                                测试时是用代码
+//                                File mf = File.createTempFile("mffff",".mp3");
+//                                FileOutputStream mfo = new FileOutputStream(mf);
+//                                mfo.write(Base64.getDecoder().decode(voiceBase64));
+//                                mfo.flush();
+//                                mfo.close();
+//                                MediaPlayer mediaPlayer = new MediaPlayer();
+//                                mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+//                                mediaPlayer.setDataSource("https://dyzhello.club/../uploads/voice/1542444389235androidVoice.mp3");
+//                                mediaPlayer.prepare();
+//                                mediaPlayer.start();
+//                                new NetWorkServer().request("POST",);
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
 //                        recorder = null;
                         TextView timeText  = voiceView.findViewById(R.id.time_show);
                         timeText.setText("00:00");

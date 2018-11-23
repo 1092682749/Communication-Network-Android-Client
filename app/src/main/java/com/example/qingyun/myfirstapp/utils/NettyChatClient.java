@@ -10,6 +10,9 @@ import com.example.qingyun.myfirstapp.pojo.ChatMsgRecord;
 import org.json.JSONObject;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.TreeMap;
+import java.util.concurrent.ArrayBlockingQueue;
 
 import javax.net.ssl.SSLEngine;
 
@@ -44,6 +47,7 @@ public enum  NettyChatClient {
     private EventLoopGroup group;
     private Bootstrap b;
     private ChannelFuture cf ;
+    private ChatMsgRecord register = null;
     private NettyChatClient(){
         group = new NioEventLoopGroup();
         b = new Bootstrap();
@@ -79,10 +83,12 @@ public enum  NettyChatClient {
                 @Override
                 public void operationComplete(ChannelFuture future) throws Exception {
                     System.out.println("连接成功");
-                    ChatMsgRecord chatMsgRecord = new ChatMsgRecord();
-                    chatMsgRecord.setSendname(MainActivity.user);
-                    chatMsgRecord.setContent("channel注册请求");
-                    future.channel().writeAndFlush(JSON.toJSONString(chatMsgRecord));
+                    if (register == null) {
+                        register = new ChatMsgRecord();
+                        register.setSendname(MainActivity.user);
+                        register.setContent("channel注册请求");
+                        future.channel().writeAndFlush(JSON.toJSONString(register)).sync();
+                    }
                 }
             });
 //            ChannelFuture future = this.cf.channel().closeFuture().sync();
@@ -109,8 +115,13 @@ public enum  NettyChatClient {
         }
         return this.cf;
     }
+
+    public ChannelFuture getChannelFuture(ChatMsgRecord chatMsgRecord) {
+        register = chatMsgRecord;
+        return getChannelFuture();
+    }
     // 暂时以String代替消息对象
-    public void write(String msg) {
+    public void write(String msg) throws InterruptedException {
         if(msg.equals("close")){
             this.cf.channel().close();
             return;
@@ -124,7 +135,16 @@ public enum  NettyChatClient {
         String json = JSON.toJSONString(chatMsgRecord);
         System.out.println(json);
         ChannelFuture channelFuture = getChannelFuture();
-        channelFuture.channel().writeAndFlush(json);
+        channelFuture.channel().writeAndFlush(json).sync();
+    }
+    // 写入对象
+    public void write(ChatMsgRecord chatMsgRecord) throws InterruptedException {
+        chatMsgRecord.setAddtime(new Date());
+        chatMsgRecord.setType(1);
+        String json = JSON.toJSONString(chatMsgRecord);
+        System.out.println(json);
+        ChannelFuture channelFuture = getChannelFuture();
+        channelFuture.channel().writeAndFlush(json).sync();
     }
     public static NettyChatClient getInstance(){
         return NETTY_CHAT_CLIENT;

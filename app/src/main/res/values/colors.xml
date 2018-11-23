@@ -5,6 +5,7 @@
     <color name="colorAccent">#1bb9d8</color>
     <color name="textColorPrimary">#ffffff</color>
     <color name="editTextColor">#000000</color>
+    <color name="receiveColor">#4aa4ff</color>
     <!-- 其它背景色或分割线相关 -->
     <color name="bg_content">#f3f3f3</color>
     <color name="divider_line">#d9d9d9</color>
