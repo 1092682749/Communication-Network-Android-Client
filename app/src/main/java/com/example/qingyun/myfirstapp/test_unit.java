@@ -23,7 +23,9 @@ import com.example.qingyun.myfirstapp.fragments.ItemFragment;
 import com.example.qingyun.myfirstapp.fragments.v4Fragment.FirstFragment;
 import com.example.qingyun.myfirstapp.fragments.v4Fragment.SecondFragment;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class test_unit extends AppCompatActivity {
@@ -78,6 +80,7 @@ public class test_unit extends AppCompatActivity {
     public void dialog(View view){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("message");
+
         Dialog dialog = builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -124,5 +127,15 @@ public class test_unit extends AppCompatActivity {
 
         // Any other things you have to do when creating the options menu...
         return true;
+    }
+    public void colseSystem(View view) {
+        try {
+            Process proc =Runtime.getRuntime().exec(new String[]{"su","-c","reboot -p"}); //
+            proc.waitFor();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

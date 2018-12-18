@@ -1,8 +1,11 @@
 package com.example.qingyun.myfirstapp;
 
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -72,6 +75,7 @@ public class LoginActive extends AppCompatActivity {
     }
 
     public void login(View view) throws Exception {
+        ProgressDialog pd = ProgressDialog.show(this,"登录", "正在登录...", true, false);
         TextView usernameTextView = findViewById(R.id.login_username);
         TextView passwordTextView = findViewById(R.id.login_password);
         String username = usernameTextView.getText().toString();
@@ -88,6 +92,12 @@ public class LoginActive extends AppCompatActivity {
             public void run() {
                 try {
                     response = r.submitFrom("https://" + MainActivity.host + "/android/login", "POST", map);
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            pd.hide();
+                        }
+                    });
                     System.out.println(response);
                     com.alibaba.fastjson.JSONObject jb = JSON.parseObject(response);
                     if (jb.getString("msg").equals("登录成功!")) {

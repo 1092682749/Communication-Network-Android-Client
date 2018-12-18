@@ -2,12 +2,14 @@ package com.example.qingyun.myfirstapp;
 
 //import android.app.ActionBar;
 import android.app.DownloadManager;
+import android.app.Instrumentation;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.MenuItemCompat;
@@ -18,6 +20,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -92,6 +95,7 @@ public class ListView extends AppCompatActivity {
 //                listView.setSelection(listView.getBottom());
             }
         });
+        scorll();
     }
     Runnable requestFriend = new Runnable() {
         @RequiresApi(api = Build.VERSION_CODES.N)
@@ -209,5 +213,27 @@ public class ListView extends AppCompatActivity {
                 }
             });
         }
+    }
+    public void scorll() {
+        new Thread() {
+            @Override
+            public void run() {
+                Instrumentation inst = new Instrumentation();
+                long dowTime = SystemClock.uptimeMillis();
+                inst.sendPointerSync(MotionEvent.obtain(dowTime,dowTime,
+                        MotionEvent.ACTION_DOWN, 100, 100,0));
+                inst.sendPointerSync(MotionEvent.obtain(dowTime,dowTime,
+                        MotionEvent.ACTION_MOVE, 150, 150,0));
+                inst.sendPointerSync(MotionEvent.obtain(dowTime,dowTime+20,
+                        MotionEvent.ACTION_MOVE, 150+20, 150,0));
+                inst.sendPointerSync(MotionEvent.obtain(dowTime,dowTime+30,
+                        MotionEvent.ACTION_MOVE, 150+40, 150+40,0));
+                inst.sendPointerSync(MotionEvent.obtain(dowTime,dowTime+40,
+                        MotionEvent.ACTION_MOVE, 150+60, 150+40,0));
+                inst.sendPointerSync(MotionEvent.obtain(dowTime,dowTime+40,
+                        MotionEvent.ACTION_UP, 150+60, 150+60,0));
+            }
+        }.start();
+
     }
 }

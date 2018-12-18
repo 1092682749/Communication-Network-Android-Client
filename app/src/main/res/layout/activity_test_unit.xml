@@ -59,4 +59,10 @@
         </LinearLayout>
 
     </android.support.v7.widget.Toolbar>
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:onClick="colseSystem"
+        android:text="关机" />
 </android.support.constraint.ConstraintLayout>

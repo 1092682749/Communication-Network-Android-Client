@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements Runnable {
             }
         });
         Intent intent = new Intent(MainActivity.this, LoginActive.class);
-//        Intent intent = new Intent(MainActivity.this, TestPopWindow.class);
+//        Intent intent = new Intent(MainActivity.this, test_unit.class);
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {

@@ -95,6 +95,7 @@ public class MyList extends AppCompatActivity implements Observer {
         // Enable the Up button
         ab.setDisplayHomeAsUpEnabled(true);
         setTitleColor(R.color.white);
+        // 将该页面注册给消息通知类
         CacheMessage.observerMap.put(MainActivity.user, MyList.this);
         intent = getIntent();
         receiveName = intent.getStringExtra("receivename");
