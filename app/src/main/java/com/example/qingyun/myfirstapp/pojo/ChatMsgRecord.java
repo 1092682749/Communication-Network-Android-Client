@@ -3,6 +3,10 @@ package com.example.qingyun.myfirstapp.pojo;
 import java.util.Date;
 
 public class ChatMsgRecord implements Comparable<ChatMsgRecord> {
+    public static final int TYPE_TEXT = 1;
+    public static final int TYPE_VOICE = 2;
+    public static final int TYPE_PICTURE = 3;
+    public static final int TYPE_RED_PACK = 4;
     private Integer id;
 
     private String receivename;
@@ -15,17 +19,7 @@ public class ChatMsgRecord implements Comparable<ChatMsgRecord> {
 
     private String content;
 
-    private String attachmentChannelType;
-
-    private Integer msgtype = 1;
-
-    public String getAttachmentChannelType() {
-        return attachmentChannelType;
-    }
-
-    public void setAttachmentChannelType(String attachmentChannelType) {
-        this.attachmentChannelType = attachmentChannelType;
-    }
+    private Integer msgtype;
 
     public Integer getId() {
         return id;
@@ -83,13 +77,33 @@ public class ChatMsgRecord implements Comparable<ChatMsgRecord> {
         this.msgtype = msgtype;
     }
 
+    private String attachmentChannelType;
+
+    public String getAttachmentChannelType() {
+        return attachmentChannelType;
+    }
+
+    public void setAttachmentChannelType(String attachmentChannelType) {
+        this.attachmentChannelType = attachmentChannelType;
+    }
+
+
     @Override
     public int compareTo(ChatMsgRecord o) {
-        if (this.addtime.getTime() > o.addtime.getTime()) {
-            return 1;
-        }
-        if (this.addtime.getTime() < o.addtime.getTime()) {
-            return -1;
+        if (this.addtime != null && o.addtime != null){
+            if (this.addtime.getTime() > o.addtime.getTime()) {
+                return 1;
+            }
+            if (this.addtime.getTime() < o.addtime.getTime()) {
+                return -1;
+            }
+        } else if (this.id != null && o.id != null) {
+            if (this.id > o.id) {
+                return 1;
+            }
+            if (this.id < o.id) {
+                return -1;
+            }
         }
         return 0;
     }

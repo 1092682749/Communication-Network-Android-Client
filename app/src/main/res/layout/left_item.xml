@@ -66,6 +66,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         </com.github.library.bubbleview.BubbleLinearLayout>
+        <com.github.library.bubbleview.BubbleLinearLayout
+            android:visibility="visible"
+            android:id="@+id/receive_image_framework"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:arrowHeight="10dp"
+            app:arrowPosition="10dp"
+            app:arrowLocation="left"
+            app:bubbleColor="@color/receiveColor"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:background="@color/colorPrimaryDark">
+            <ImageView
+                android:id="@+id/receive_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="100dp"/>
+
+        </com.github.library.bubbleview.BubbleLinearLayout>
     </LinearLayout>
 
 </LinearLayout>

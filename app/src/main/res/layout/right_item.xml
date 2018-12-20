@@ -18,6 +18,27 @@
     android:gravity="center_vertical|right">
     <com.github.library.bubbleview.BubbleLinearLayout
         android:visibility="gone"
+        android:id="@+id/send_image_framework"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:angle="4dp"
+        app:arrowHeight="10dp"
+        app:arrowPosition="10dp"
+        app:arrowLocation="right"
+        android:layout_marginRight="10dp"
+        app:bubbleColor="@color/colorPrimaryDark"
+        app:arrowCenter="true"
+        android:background="@color/colorPrimaryDark">
+        <ImageView
+            android:id="@+id/send_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="100dp"/>
+
+    </com.github.library.bubbleview.BubbleLinearLayout>
+    <com.github.library.bubbleview.BubbleLinearLayout
+        android:visibility="gone"
         android:layout_marginRight="10dp"
         android:orientation="horizontal"
         android:gravity="center"

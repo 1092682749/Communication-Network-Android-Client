@@ -1,5 +1,6 @@
 package com.example.qingyun.myfirstapp;
 
+import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -9,6 +10,8 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -20,6 +23,7 @@ import android.os.Process;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
@@ -27,11 +31,13 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -47,20 +53,27 @@ import com.example.qingyun.myfirstapp.utils.HttpRequestor;
 import com.example.qingyun.myfirstapp.utils.NetWorkServer;
 import com.example.qingyun.myfirstapp.utils.NetWorkServerListener;
 import com.example.qingyun.myfirstapp.utils.NettyChatClient;
+import com.example.qingyun.myfirstapp.utils.ResponseResult;
 import com.example.qingyun.myfirstapp.utils.json.JsonToBean;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedWriter;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.util.Base64;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -83,6 +96,7 @@ public class MyList extends AppCompatActivity implements Observer {
     public Long recrderEndTime;
     public File voiceFile;
     public ChatMsgRecord responseChatMsgRecored;
+
     //    android.widget.ListView listView = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,6 +124,7 @@ public class MyList extends AppCompatActivity implements Observer {
         android.widget.ListView listView = findViewById(R.id.my_list);
         listView.setAdapter(adapter);
         initBtnEvent();
+        listViewTouch();
     }
 
     @Override
@@ -301,9 +316,96 @@ public class MyList extends AppCompatActivity implements Observer {
         }
     }
 
+    @TargetApi(Build.VERSION_CODES.O)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 //        if ()
+        // 拍照
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            ImageView mImageView = findViewById(R.id.imageView);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+            Base64.Encoder encoder = Base64.getEncoder();
+            String imageStr = encoder.encodeToString(baos.toByteArray());
+            Map<String, String> map = new HashMap<>();
+            map.put("content", imageStr);
+            new NetWorkServer().setNetWorkServerListener(new NetWorkServerListener() {
+                @Override
+                public void onSuccessed(Object response) {
+                    System.out.println(response);
+                    ResponseResult responseResult = (ResponseResult) JsonToBean.changeObject((String) response, ResponseResult.class);
+                    System.out.println(responseResult);
+                    com.alibaba.fastjson.JSONObject jsonObject = (com.alibaba.fastjson.JSONObject) responseResult.getData();
+                    ChatMsgRecord chatMsgRecord = (ChatMsgRecord) JsonToBean.changeObject(jsonObject.toJSONString(), ChatMsgRecord.class);
+                    chatMsgRecord.setReceivename(MyList.receiveName);
+                    chatMsgRecord.setSendname(MainActivity.user);
+                    chatMsgRecord.setMsgtype(ChatMsgRecord.TYPE_PICTURE);
+                    chatMsgRecord.setAddtime(new Date());
+                    chatMsgRecords.add(chatMsgRecord);
+                    handler.post(runnable);
+                    try {
+                        nettyChatClient.write(chatMsgRecord);
+
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void onFailed(Object message) {
+                    System.out.print(message);
+                }
+            }).request("post", "http://192.168.0.222:8443/android/uploadImage", map);
+        }
+        // 相机选取
+        if (requestCode == 2 && resultCode == RESULT_OK) {
+            Uri imageUri = data.getData();
+            try {
+                InputStream ins = getContentResolver().openInputStream(imageUri);
+//                FileOutputStream fos = new FileOutputStream(tempFile);
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                byte[] bytes = new byte[1024];
+                int len = 0;
+                while ((len = ins.read(bytes)) != -1){
+                    bos.write(bytes, 0, len);
+                }
+//                Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
+
+                String imageStr = Base64.getEncoder().encodeToString(bos.toByteArray());
+//
+                Map<String, String> map = new HashMap<>();
+                map.put("content", imageStr);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        new NetWorkServer().setNetWorkServerListener(
+                                new NetWorkServerListener() {
+                                    @Override
+                                    public void onSuccessed(Object response) {
+                                        ResponseResult responseResult = (ResponseResult) JsonToBean.changeObject((String) response, ResponseResult.class);
+                                        Object o = responseResult.getData();
+                                        com.alibaba.fastjson.JSONObject jsonObject = (com.alibaba.fastjson.JSONObject) o;
+                                        ChatMsgRecord chatMsgRecord = (ChatMsgRecord) JsonToBean.changeObject(jsonObject.toJSONString(), ChatMsgRecord.class);
+                                        chatMsgRecord.setAddtime(new Date());
+                                        chatMsgRecord.setMsgtype(ChatMsgRecord.TYPE_PICTURE);
+                                        chatMsgRecord.setSendname(MainActivity.user);
+                                        chatMsgRecord.setReceivename(MyList.receiveName);
+                                        chatMsgRecords.add(chatMsgRecord);
+                                        handler.post(runnable);
+                                    }
+                                    @Override
+                                    public void onFailed(Object message) {
+                                        System.out.println("图片上传失败");
+                                    }
+                                }).request("post", "http://192.168.0.222:8443/android/uploadImage", map);
+                    }
+                }).start();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     // 点击发送图片
@@ -336,6 +438,8 @@ public class MyList extends AppCompatActivity implements Observer {
 
     // 初始化按钮事件
     public void initBtnEvent() {
+        // 表情点击初始化
+        showFragment();
         TextView textView = findViewById(R.id.voice_text);
         View voiceView = getLayoutInflater().inflate(R.layout.layout, null);
         voiceWindow = new PopupWindow(voiceView, 370, 370, true);
@@ -363,7 +467,7 @@ public class MyList extends AppCompatActivity implements Observer {
                         if (!filePath.exists()) {
                             filePath.mkdirs();
                         }
-                        voiceFile = new File(filePath,System.currentTimeMillis() + "MyAppVoice.mp3");
+                        voiceFile = new File(filePath, System.currentTimeMillis() + "MyAppVoice.mp3");
                         if (!voiceFile.exists()) {
                             try {
                                 voiceFile.createNewFile();
@@ -395,19 +499,19 @@ public class MyList extends AppCompatActivity implements Observer {
                                 FileInputStream fis = new FileInputStream(voiceFile);
                                 int len = 0;
                                 ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                                 while ((len = fis.read(bytes)) != -1) {
-                                     bos.write(bytes, 0, len);
-                                 }
+                                while ((len = fis.read(bytes)) != -1) {
+                                    bos.write(bytes, 0, len);
+                                }
 
                                 String voiceBase64 = Base64.getEncoder().encodeToString(bos.toByteArray());
-                                 Map<String, String> map = new HashMap<>();
-                                 map.put("content", voiceBase64);
+                                Map<String, String> map = new HashMap<>();
+                                map.put("content", voiceBase64);
                                 new NetWorkServer().setNetWorkServerListener(
                                         new NetWorkServerListener() {
                                             @Override
                                             public void onSuccessed(Object response) {
                                                 System.out.println((String) response);
-                                                responseChatMsgRecored = (ChatMsgRecord) JsonToBean.changeObject((String) response,ChatMsgRecord.class);
+                                                responseChatMsgRecored = (ChatMsgRecord) JsonToBean.changeObject((String) response, ChatMsgRecord.class);
                                                 responseChatMsgRecored.setSendname(MainActivity.user);
                                                 responseChatMsgRecored.setReceivename(MainActivity.receivename);
                                                 chatMsgRecords.add(responseChatMsgRecored);
@@ -426,7 +530,7 @@ public class MyList extends AppCompatActivity implements Observer {
                                                 System.out.println("failed");
                                             }
                                         }
-                                ).request("post","https://dyzhello.club/ok/saveVoice", map);
+                                ).request("post", "https://dyzhello.club/ok/saveVoice", map);
                                 System.out.println(voiceBase64);
 //                                测试时是用代码
 //                                File mf = File.createTempFile("mffff",".mp3");
@@ -447,7 +551,7 @@ public class MyList extends AppCompatActivity implements Observer {
                             }
                         }
 //                        recorder = null;
-                        TextView timeText  = voiceView.findViewById(R.id.time_show);
+                        TextView timeText = voiceView.findViewById(R.id.time_show);
                         timeText.setText("00:00");
                         System.out.println("UP");
                         break;
@@ -476,7 +580,7 @@ public class MyList extends AppCompatActivity implements Observer {
                                 recrderEndTime = System.currentTimeMillis();
                                 Long intervalTime = (recrderEndTime - recorderStartTime) / 1000;
                                 String str = timeFormat(intervalTime.intValue());
-                                TextView timeText  = view.findViewById(R.id.time_show);
+                                TextView timeText = view.findViewById(R.id.time_show);
                                 timeText.setText(str);
                             }
                         }
@@ -490,6 +594,7 @@ public class MyList extends AppCompatActivity implements Observer {
             }
         }.start();
     }
+
     public String timeFormat(int value) {
         int hour = 0;
         int minute = 0;
@@ -502,5 +607,72 @@ public class MyList extends AppCompatActivity implements Observer {
             return hour + "" + minute + ":" + value;
         }
         return hour + "" + minute + ":0" + value;
+    }
+
+    // 图片
+    public void showFragment() {
+        ImageView imageView = findViewById(R.id.emotion_button);
+        ImageView selectPic = findViewById(R.id.chat_function_photo);
+        ImageView takePic = findViewById(R.id.chat_function_photograph);
+        selectPic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent selectIntent = new Intent(Intent.ACTION_GET_CONTENT);
+                selectIntent.setType("image/*");
+                startActivityForResult(selectIntent, 2);
+            }
+        });
+        takePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivityForResult(takePictureIntent, 1);
+                }
+            }
+        });
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LinearLayout linearLayout = findViewById(R.id.my_list_pic_view);
+                int isVisibility = linearLayout.getVisibility();
+                if (View.GONE == isVisibility) {
+                    linearLayout.setVisibility(View.VISIBLE);
+                } else {
+                    linearLayout.setVisibility(View.GONE);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        LinearLayout linearLayout = findViewById(R.id.my_list_pic_view);
+        if (linearLayout.getVisibility() == View.VISIBLE) {
+            linearLayout.setVisibility(View.GONE);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    public void listViewTouch() {
+        ListView listView = findViewById(R.id.my_list);
+        listView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                LinearLayout linearLayout = MyList.this.findViewById(R.id.my_list_pic_view);
+                                linearLayout.setVisibility(View.GONE);
+                            }
+                        });
+                        return true;
+                }
+                return false;
+            }
+        });
     }
 }
