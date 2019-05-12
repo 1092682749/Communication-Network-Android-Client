@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: cn.jiguang.imui:messagelist:0.7.4@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/messagelist-0.7.4.aar/1276c163a63ffc503e08e97443e7b98b/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/messagelist-0.7.4.aar/1276c163a63ffc503e08e97443e7b98b/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/cn.jiguang.imui/messagelist/0.7.4/7b5bef240b0d52b89478f790ece559056a8567ee/messagelist-0.7.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

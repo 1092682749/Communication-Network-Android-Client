@@ -11,8 +11,13 @@ import org.json.JSONObject;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.TimerTask;
 import java.util.TreeMap;
 import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.SSLEngine;
 
@@ -41,14 +46,16 @@ import io.netty.util.concurrent.FutureListener;
 
 public enum  NettyChatClient {
     NETTY_CHAT_CLIENT();
-//    String host = "dyz";
-    String host = "119.29.4.88";
+    //    String host = "dyz";
+    String host = "dyzhello.club";
     int port = 8000;
     private EventLoopGroup group;
     private Bootstrap b;
-    private ChannelFuture cf ;
+    private ChannelFuture cf;
     private ChatMsgRecord register = null;
-    private NettyChatClient(){
+    static public int alive = 0;
+
+    private NettyChatClient() {
         group = new NioEventLoopGroup();
         b = new Bootstrap();
         b.group(group).channel(NioSocketChannel.class)
@@ -76,19 +83,22 @@ public enum  NettyChatClient {
                 });
     }
 
-    public void connect(){
+    public void connect() {
         try {
             this.cf = b.connect(host, port).sync();
             this.cf.addListener(new ChannelFutureListener() {
                 @Override
                 public void operationComplete(ChannelFuture future) throws Exception {
                     System.out.println("连接成功");
+                    alive = 1;
                     if (register == null) {
                         register = new ChatMsgRecord();
                         register.setSendname(MainActivity.user);
                         register.setContent("channel注册请求");
-                        future.channel().writeAndFlush(JSON.toJSONString(register)).sync();
+                        future.channel().writeAndFlush(JSON.toJSONString(register));
                     }
+                    // 开启定时任务
+                    heartbeat(future);
                 }
             });
 //            ChannelFuture future = this.cf.channel().closeFuture().sync();
@@ -120,9 +130,10 @@ public enum  NettyChatClient {
         register = chatMsgRecord;
         return getChannelFuture();
     }
+
     // 暂时以String代替消息对象
     public void write(String msg) throws InterruptedException {
-        if(msg.equals("close")){
+        if (msg.equals("close")) {
             this.cf.channel().close();
             return;
         }
@@ -137,6 +148,7 @@ public enum  NettyChatClient {
         ChannelFuture channelFuture = getChannelFuture();
         channelFuture.channel().writeAndFlush(json).sync();
     }
+
     // 写入对象
     public void write(ChatMsgRecord chatMsgRecord) throws InterruptedException {
         chatMsgRecord.setAddtime(new Date());
@@ -146,7 +158,21 @@ public enum  NettyChatClient {
         ChannelFuture channelFuture = getChannelFuture();
         channelFuture.channel().writeAndFlush(json).sync();
     }
-    public static NettyChatClient getInstance(){
+
+    public static NettyChatClient getInstance() {
         return NETTY_CHAT_CLIENT;
+    }
+
+    public void heartbeat(ChannelFuture future) {
+        System.out.print("aaaaaaaaaaaaaaaaaaaaa//////////////////");
+        ScheduledExecutorService exe = Executors.newScheduledThreadPool(1);
+        exe.scheduleAtFixedRate(new Runnable() {
+            @Override
+            public void run() {
+                System.out.print("aaaaaaaaaaaaaaaaa");
+                future.channel().writeAndFlush("content: nccHeart");
+                alive--;
+            }
+        }, 0, 5, TimeUnit.SECONDS);
     }
 }

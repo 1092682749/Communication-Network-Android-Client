@@ -1,0 +1,4 @@
+#Sun May 12 21:19:55 CST 2019
+base.0=C\:\\dyzFiles\\code\\Communication-Network-Android-Client\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1
+path.0=classes.dex
+renamed.0=classes.dex

@@ -82,6 +82,9 @@ public class MainActivity extends AppCompatActivity implements Runnable {
     public static String serizablePath = "/sdcard/ncc/user/";
     public static String recorderPath = "/sdcard/ncc/voice/";
     public static String appSavePath = "/sdcard/ncc/apkFile/";
+//    public static String serizablePath = "/";
+//    public static String recorderPath = "/";
+//    public static String appSavePath = "/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

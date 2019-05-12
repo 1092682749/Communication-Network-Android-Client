@@ -1,0 +1,329 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:2:1-86:12
+INJECTED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:2:1-86:12
+INJECTED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:2:1-86:12
+INJECTED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:2:1-86:12
+MERGED from [com.qmuiteam:qmui:1.1.3] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\qmui-1.1.3.aar\eac74a9485bebffbcd63b852150c8aa5\AndroidManifest.xml:2:1-9:12
+MERGED from [cn.jiguang.imui:messagelist:0.7.4] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\messagelist-0.7.4.aar\1276c163a63ffc503e08e97443e7b98b\AndroidManifest.xml:2:1-16:12
+MERGED from [com.github.lguipeng:BubbleView:1.0.1] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\BubbleView-1.0.1.aar\50a22a129dba835c0a7c784b8de5b136\AndroidManifest.xml:2:1-16:12
+MERGED from [com.android.support:design:27.1.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\design-27.1.0.aar\cbdcadc1db025338b8e12653fa343f72\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\appcompat-v7-28.0.0.aar\7788dcbaabaede2096e920511c8d7bda\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\e31f467252aaa5e2839cde507f5cc982\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-28.0.0.aar\ca11bbbdca8a6a2aa21b86c399d9e3e3\AndroidManifest.xml:17:1-22:12
+MERGED from [com.yalantis:phoenix:1.2.3] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\phoenix-1.2.3.aar\ce0f448da2dbd2478bb410c4f19c78e9\AndroidManifest.xml:2:1-12:12
+MERGED from [com.android.support:support-v4:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\support-v4-28.0.0.aar\554a09f7888ebb1fbf95544916033129\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:extensions:1.1.1] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\extensions-1.1.1.aar\20fd7729fb93c45307424e236f0054e3\AndroidManifest.xml:17:1-30:12
+MERGED from [org.zackratos:ultimatebar:1.0.3] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\ultimatebar-1.0.3.aar\c3961f0de8097ed6abbd7b37ff09f155\AndroidManifest.xml:2:1-16:12
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-28.0.0.aar\94b575060edaf8ee1dff90979cfa5f95\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-28.0.0.aar\d314f08e92d50df87935c199eb3ad9a2\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:27.1.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\transition-27.1.0.aar\b92b2a67642ca4828847e8ef3e77feee\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\1acccbab3085d6a006963afa62d59aba\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\7aad7600fb9f8baf0701ff5f633c735b\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\6a7deaa1afc9897505978e293e808603\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\viewpager-28.0.0.aar\f6b7e2cc522fd5fe9fb0cbed38aaccac\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-28.0.0.aar\4d28d811e5351cc4ea78d29795179032\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\drawerlayout-28.0.0.aar\2f2752edb3c14562e05a39eda283da69\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-28.0.0.aar\801455cb3310dde3c09a9afb2a0af6fc\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customview:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\customview-28.0.0.aar\5ce27b45ac41c2337aa667ae3c90ad85\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-28.0.0.aar\d8987f5857b27d08c812ef36303a0b77\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-28.0.0.aar\feebee1d8661f9464c2876444700fe4e\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:loader:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\4adeb9e93c241bbf8d6109b943c9d715\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\support-media-compat-28.0.0.aar\f23a375a93b89e3bd4bb9d4656c07046\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\fb0212165f4c1e0e1c31b6d35becb728\AndroidManifest.xml:17:1-24:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\bd32d046c535fef46b43ce5d1b7b9bdd\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\b094654f52b3ef7525893be71058fb34\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\e149797c755949bc75602ef3b7c74367\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\f48fdf57af0ac4663f561282141eff1c\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\202c7d3c204931dfb39229a1c04b078b\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\7e778c335b86d13c03be82d5a9f16b46\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\099d269bfa4f091c9a0fcbdb12fd9bf2\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\39c1e75d37c3c1f18faa3725c72f844f\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-28.0.0.aar\8ef70d9eab76c5d7f4d8736c0a2652a1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:print:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\print-28.0.0.aar\0d430661046d7efd0b480dc1e3dfd9e6\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\f0bee155ba2de83767fb5a2b718456be\AndroidManifest.xml:17:1-25:12
+INJECTED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:2:1-86:12
+INJECTED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:2:1-86:12
+INJECTED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:2:1-86:12
+	package
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:3:5-45
+		INJECTED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml
+		INJECTED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:2:1-86:12
+		INJECTED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:2:1-86:12
+		INJECTED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:5:5-67
+	android:name
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:5:22-64
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:6:5-76
+	android:name
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:6:22-73
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:7:5-79
+	android:name
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:7:22-76
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:8:5-81
+	android:name
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:8:22-78
+uses-permission#android.permission.CHANGE_NETWORK_STATE
+ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:9:5-79
+	android:name
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:9:22-76
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:10:5-76
+	android:name
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:10:22-73
+uses-permission#android.permission.WAKE_LOCK
+ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:11:5-68
+	android:name
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:11:22-65
+uses-feature#android.hardware.camera
+ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:12:5-14:35
+	android:required
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:14:9-32
+	android:name
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:13:9-47
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:16:5-80
+	android:name
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:16:22-77
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:18:5-71
+	android:name
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:18:22-68
+application
+ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:20:5-84:19
+MERGED from [cn.jiguang.imui:messagelist:0.7.4] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\messagelist-0.7.4.aar\1276c163a63ffc503e08e97443e7b98b\AndroidManifest.xml:11:5-14:19
+MERGED from [cn.jiguang.imui:messagelist:0.7.4] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\messagelist-0.7.4.aar\1276c163a63ffc503e08e97443e7b98b\AndroidManifest.xml:11:5-14:19
+MERGED from [com.github.lguipeng:BubbleView:1.0.1] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\BubbleView-1.0.1.aar\50a22a129dba835c0a7c784b8de5b136\AndroidManifest.xml:11:5-14:19
+MERGED from [com.github.lguipeng:BubbleView:1.0.1] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\BubbleView-1.0.1.aar\50a22a129dba835c0a7c784b8de5b136\AndroidManifest.xml:11:5-14:19
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\e31f467252aaa5e2839cde507f5cc982\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\e31f467252aaa5e2839cde507f5cc982\AndroidManifest.xml:9:5-20
+MERGED from [android.arch.lifecycle:extensions:1.1.1] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\extensions-1.1.1.aar\20fd7729fb93c45307424e236f0054e3\AndroidManifest.xml:22:5-28:19
+MERGED from [android.arch.lifecycle:extensions:1.1.1] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\extensions-1.1.1.aar\20fd7729fb93c45307424e236f0054e3\AndroidManifest.xml:22:5-28:19
+MERGED from [org.zackratos:ultimatebar:1.0.3] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\ultimatebar-1.0.3.aar\c3961f0de8097ed6abbd7b37ff09f155\AndroidManifest.xml:11:5-14:19
+MERGED from [org.zackratos:ultimatebar:1.0.3] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\ultimatebar-1.0.3.aar\c3961f0de8097ed6abbd7b37ff09f155\AndroidManifest.xml:11:5-14:19
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\fb0212165f4c1e0e1c31b6d35becb728\AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\fb0212165f4c1e0e1c31b6d35becb728\AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\f0bee155ba2de83767fb5a2b718456be\AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\f0bee155ba2de83767fb5a2b718456be\AndroidManifest.xml:22:5-23:19
+	android:appComponentFactory
+		ADDED from [com.android.support:support-compat:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\fb0212165f4c1e0e1c31b6d35becb728\AndroidManifest.xml:22:18-91
+	android:supportsRtl
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:25:9-35
+	android:label
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:23:9-41
+	android:roundIcon
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:24:9-54
+	android:icon
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:22:9-43
+	android:allowBackup
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:21:9-35
+	android:theme
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:26:9-40
+activity#com.example.qingyun.myfirstapp.MainActivity
+ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:27:9-33:20
+	android:name
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:27:19-47
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:28:13-32:29
+action#android.intent.action.MAIN
+ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:29:17-69
+	android:name
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:29:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:31:17-77
+	android:name
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:31:27-74
+activity#com.example.qingyun.myfirstapp.DisplayMessageActivity
+ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:34:9-40:20
+	android:parentActivityName
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:36:13-55
+	android:name
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:35:13-51
+meta-data#android.support.PARENT_ACTIVITY
+ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:37:13-39:49
+	android:value
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:39:17-46
+	android:name
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:38:17-63
+service#com.example.qingyun.myfirstapp.service.WebSocketService
+ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:42:9-45:39
+	android:enabled
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:44:13-35
+	android:exported
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:45:13-36
+	android:name
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:43:13-53
+activity#com.example.qingyun.myfirstapp.ChatMainActivity
+ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:47:9-54
+	android:name
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:47:19-51
+activity#com.example.qingyun.myfirstapp.FriendListActivity
+ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:49:9-56
+	android:name
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:49:19-53
+service#com.example.qingyun.myfirstapp.service.RequestService
+ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:51:9-54:39
+	android:enabled
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:53:13-35
+	android:exported
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:54:13-36
+	android:name
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:52:13-51
+activity#com.example.qingyun.myfirstapp.AuroraActivity
+ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:56:9-52
+	android:name
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:56:19-49
+activity#com.example.qingyun.myfirstapp.ListView
+ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:57:9-46
+	android:name
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:57:19-43
+activity#com.example.qingyun.myfirstapp.MyList
+ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:58:9-64:20
+	android:parentActivityName
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:60:13-51
+	android:name
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:59:13-35
+activity#com.example.qingyun.myfirstapp.LoginActive
+ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:65:9-49
+	android:name
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:65:19-46
+activity#com.example.qingyun.myfirstapp.Regist
+ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:66:9-44
+	android:name
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:66:19-41
+activity#com.example.qingyun.myfirstapp.test_unit
+ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:67:9-75:20
+	android:parentActivityName
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:69:13-55
+	android:name
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:68:13-38
+activity#com.example.qingyun.myfirstapp.PullToRefreshViewTest
+ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:76:9-59
+	android:name
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:76:19-56
+meta-data#com.google.android.actions
+ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:78:9-80:56
+	android:resource
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:80:13-53
+	android:name
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:79:13-54
+activity#com.example.qingyun.myfirstapp.CollectionDemoActivity
+ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:82:9-60
+	android:name
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:82:19-57
+activity#com.example.qingyun.myfirstapp.TestPopWindow
+ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:83:9-60
+	android:name
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml:83:19-48
+uses-sdk
+INJECTED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml
+INJECTED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml
+MERGED from [com.qmuiteam:qmui:1.1.3] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\qmui-1.1.3.aar\eac74a9485bebffbcd63b852150c8aa5\AndroidManifest.xml:5:5-7:41
+MERGED from [com.qmuiteam:qmui:1.1.3] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\qmui-1.1.3.aar\eac74a9485bebffbcd63b852150c8aa5\AndroidManifest.xml:5:5-7:41
+MERGED from [cn.jiguang.imui:messagelist:0.7.4] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\messagelist-0.7.4.aar\1276c163a63ffc503e08e97443e7b98b\AndroidManifest.xml:7:5-9:41
+MERGED from [cn.jiguang.imui:messagelist:0.7.4] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\messagelist-0.7.4.aar\1276c163a63ffc503e08e97443e7b98b\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.lguipeng:BubbleView:1.0.1] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\BubbleView-1.0.1.aar\50a22a129dba835c0a7c784b8de5b136\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.lguipeng:BubbleView:1.0.1] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\BubbleView-1.0.1.aar\50a22a129dba835c0a7c784b8de5b136\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:design:27.1.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\design-27.1.0.aar\cbdcadc1db025338b8e12653fa343f72\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:27.1.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\design-27.1.0.aar\cbdcadc1db025338b8e12653fa343f72\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\appcompat-v7-28.0.0.aar\7788dcbaabaede2096e920511c8d7bda\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\appcompat-v7-28.0.0.aar\7788dcbaabaede2096e920511c8d7bda\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\e31f467252aaa5e2839cde507f5cc982\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\e31f467252aaa5e2839cde507f5cc982\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-28.0.0.aar\ca11bbbdca8a6a2aa21b86c399d9e3e3\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-28.0.0.aar\ca11bbbdca8a6a2aa21b86c399d9e3e3\AndroidManifest.xml:20:5-44
+MERGED from [com.yalantis:phoenix:1.2.3] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\phoenix-1.2.3.aar\ce0f448da2dbd2478bb410c4f19c78e9\AndroidManifest.xml:8:5-10:41
+MERGED from [com.yalantis:phoenix:1.2.3] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\phoenix-1.2.3.aar\ce0f448da2dbd2478bb410c4f19c78e9\AndroidManifest.xml:8:5-10:41
+MERGED from [com.android.support:support-v4:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\support-v4-28.0.0.aar\554a09f7888ebb1fbf95544916033129\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\support-v4-28.0.0.aar\554a09f7888ebb1fbf95544916033129\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:extensions:1.1.1] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\extensions-1.1.1.aar\20fd7729fb93c45307424e236f0054e3\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:extensions:1.1.1] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\extensions-1.1.1.aar\20fd7729fb93c45307424e236f0054e3\AndroidManifest.xml:20:5-44
+MERGED from [org.zackratos:ultimatebar:1.0.3] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\ultimatebar-1.0.3.aar\c3961f0de8097ed6abbd7b37ff09f155\AndroidManifest.xml:7:5-9:41
+MERGED from [org.zackratos:ultimatebar:1.0.3] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\ultimatebar-1.0.3.aar\c3961f0de8097ed6abbd7b37ff09f155\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-28.0.0.aar\94b575060edaf8ee1dff90979cfa5f95\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-28.0.0.aar\94b575060edaf8ee1dff90979cfa5f95\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-28.0.0.aar\d314f08e92d50df87935c199eb3ad9a2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-28.0.0.aar\d314f08e92d50df87935c199eb3ad9a2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\transition-27.1.0.aar\b92b2a67642ca4828847e8ef3e77feee\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\transition-27.1.0.aar\b92b2a67642ca4828847e8ef3e77feee\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\1acccbab3085d6a006963afa62d59aba\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\1acccbab3085d6a006963afa62d59aba\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\7aad7600fb9f8baf0701ff5f633c735b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\7aad7600fb9f8baf0701ff5f633c735b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\6a7deaa1afc9897505978e293e808603\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\6a7deaa1afc9897505978e293e808603\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\viewpager-28.0.0.aar\f6b7e2cc522fd5fe9fb0cbed38aaccac\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\viewpager-28.0.0.aar\f6b7e2cc522fd5fe9fb0cbed38aaccac\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-28.0.0.aar\4d28d811e5351cc4ea78d29795179032\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-28.0.0.aar\4d28d811e5351cc4ea78d29795179032\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\drawerlayout-28.0.0.aar\2f2752edb3c14562e05a39eda283da69\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\drawerlayout-28.0.0.aar\2f2752edb3c14562e05a39eda283da69\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-28.0.0.aar\801455cb3310dde3c09a9afb2a0af6fc\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-28.0.0.aar\801455cb3310dde3c09a9afb2a0af6fc\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\customview-28.0.0.aar\5ce27b45ac41c2337aa667ae3c90ad85\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\customview-28.0.0.aar\5ce27b45ac41c2337aa667ae3c90ad85\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-28.0.0.aar\d8987f5857b27d08c812ef36303a0b77\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-28.0.0.aar\d8987f5857b27d08c812ef36303a0b77\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-28.0.0.aar\feebee1d8661f9464c2876444700fe4e\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-28.0.0.aar\feebee1d8661f9464c2876444700fe4e\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\4adeb9e93c241bbf8d6109b943c9d715\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\4adeb9e93c241bbf8d6109b943c9d715\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\support-media-compat-28.0.0.aar\f23a375a93b89e3bd4bb9d4656c07046\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\support-media-compat-28.0.0.aar\f23a375a93b89e3bd4bb9d4656c07046\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\fb0212165f4c1e0e1c31b6d35becb728\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\fb0212165f4c1e0e1c31b6d35becb728\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\bd32d046c535fef46b43ce5d1b7b9bdd\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\bd32d046c535fef46b43ce5d1b7b9bdd\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\b094654f52b3ef7525893be71058fb34\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\b094654f52b3ef7525893be71058fb34\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\e149797c755949bc75602ef3b7c74367\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\e149797c755949bc75602ef3b7c74367\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\f48fdf57af0ac4663f561282141eff1c\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\f48fdf57af0ac4663f561282141eff1c\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\202c7d3c204931dfb39229a1c04b078b\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\202c7d3c204931dfb39229a1c04b078b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\7e778c335b86d13c03be82d5a9f16b46\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\7e778c335b86d13c03be82d5a9f16b46\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\099d269bfa4f091c9a0fcbdb12fd9bf2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\099d269bfa4f091c9a0fcbdb12fd9bf2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\39c1e75d37c3c1f18faa3725c72f844f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\39c1e75d37c3c1f18faa3725c72f844f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-28.0.0.aar\8ef70d9eab76c5d7f4d8736c0a2652a1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-28.0.0.aar\8ef70d9eab76c5d7f4d8736c0a2652a1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\print-28.0.0.aar\0d430661046d7efd0b480dc1e3dfd9e6\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\print-28.0.0.aar\0d430661046d7efd0b480dc1e3dfd9e6\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\f0bee155ba2de83767fb5a2b718456be\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\f0bee155ba2de83767fb5a2b718456be\AndroidManifest.xml:20:5-44
+INJECTED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml
+INJECTED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml
+		INJECTED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml
+		ADDED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml
+		INJECTED from C:\dyzFiles\code\Communication-Network-Android-Client\app\src\main\AndroidManifest.xml
+provider#android.arch.lifecycle.ProcessLifecycleOwnerInitializer
+ADDED from [android.arch.lifecycle:extensions:1.1.1] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\extensions-1.1.1.aar\20fd7729fb93c45307424e236f0054e3\AndroidManifest.xml:23:9-27:43
+	android:authorities
+		ADDED from [android.arch.lifecycle:extensions:1.1.1] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\extensions-1.1.1.aar\20fd7729fb93c45307424e236f0054e3\AndroidManifest.xml:25:13-68
+	android:multiprocess
+		ADDED from [android.arch.lifecycle:extensions:1.1.1] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\extensions-1.1.1.aar\20fd7729fb93c45307424e236f0054e3\AndroidManifest.xml:27:13-40
+	android:exported
+		ADDED from [android.arch.lifecycle:extensions:1.1.1] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\extensions-1.1.1.aar\20fd7729fb93c45307424e236f0054e3\AndroidManifest.xml:26:13-37
+	android:name
+		ADDED from [android.arch.lifecycle:extensions:1.1.1] C:\Users\dyz\.gradle\caches\transforms-1\files-1.1\extensions-1.1.1.aar\20fd7729fb93c45307424e236f0054e3\AndroidManifest.xml:24:13-83

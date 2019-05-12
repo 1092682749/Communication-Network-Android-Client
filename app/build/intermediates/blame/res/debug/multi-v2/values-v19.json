@@ -1,0 +1,28 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\dyzFiles\\code\\Communication-Network-Android-Client\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v19\\values-v19.xml",
+            "map": [
+                {
+                    "source": "C:\\dyzFiles\\code\\Communication-Network-Android-Client\\app\\src\\main\\res\\values-v19\\styles.xml",
+                    "from": {
+                        "startLines": "3,23,15",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "59,1046,731",
+                        "endLines": "14,28,20",
+                        "endColumns": "12,12,12",
+                        "endOffsets": "725,1337,1036"
+                    },
+                    "to": {
+                        "startLines": "2,14,20",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,715,1006",
+                        "endLines": "13,19,25",
+                        "endColumns": "12,12,12",
+                        "endOffsets": "710,1001,1306"
+                    }
+                }
+            ]
+        }
+    ]
+}
